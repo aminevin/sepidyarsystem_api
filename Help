@@ -1,0 +1,5058 @@
+Sepidyar API Gateway v1
+v1.0.0
+Base URLs:
+Authentication
+●	HTTP Authentication, scheme: bearer
+Account
+
+POST Account(درختواره حسابداری)
+POST /api/v1/Account/Get
+شما در این متد میتونید تمام درختواره های حسابداری را دریافت کنید
+Body Parameters
+{
+  "accountId": 0,
+  "type": 0,
+  "code": "",
+  "title": "",
+  "search": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» accountId	body	integer(int32)¦null	no	شناسه یک درختواره(پیش فرض 0)
+» type	body	integer(int32)¦null	no	نوع درختواره (پیش فرض 2)
+» code	body	string¦null	no	کد یک درختواره (پیش فرض خالی)
+» title	body	string¦null	no	عنوان یک درختواره (پیش فرض خالی)
+» search	body	string¦null	no	سرچ در یک درختواره (پیش فرض خالی)
+» sortBy	body	string¦null	no	مرتب سازی بر اساس فیلد ها
+» sortDesc	body	boolean	no	نزولی و صعودی
+» take	body	integer(int64)	yes	تعداد هر درخواست (پیش فرض 10)
+» skip	body	integer(int64)	yes	تعداد عبور کردن (پیش فرض )
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+DL
+
+POST DL(ذخیره حساب تفصیلی)
+POST /api/v1/DL/Save
+شما با این متد میتونید یک تفصیل جدید ایجاد کنید
+Body Parameters
+{
+  "dl": {
+    "dlId": 0,
+    "code": "string",
+    "title": "string",
+    "title_En": "string",
+    "type": 0,
+    "isActive": true
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» dl	body	object	no	none
+»» dlId	body	integer(int32)¦null	no	در صورت ویرایش باید مقدار دهی کنید در غیر این صورت 0 قرار بدهید
+»» code	body	string¦null	yes	کد تفصیلی اگر خالی باشد سیستم خودکار کد میسازد
+»» title	body	string¦null	yes	عنوان فارسی تفصیلی
+»» title_En	body	string¦null	yes	عنوان دوم تفصیلی
+»» type	body	integer(int32)¦null	yes	نوع تفصیل برای اشخاص 2
+»» isActive	body	boolean¦null	yes	وضعیت تفصیل
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST DL(حذف حساب تفصیلی)
+POST /api/v1/DL/Delete
+شما با این متد میتونید یک شناسه تفصیلی را حذف کنید دقت کنید در صورت اشتباه مسئولیت ان برعهده خودتان میباشد
+Body Parameters
+{
+  "dl": {
+    "dlId": 0,
+    "code": "string"
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» dl	body	object	no	none
+»» dlId	body	integer(int32)¦null	no	شناسه یک تفصیلی (پیش فرض خالی)
+»» code	body	string¦null	no	کد یک تفصیلی (پیش فرض خالی)
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST DL(حساب های تفصیلی)
+POST /api/v1/DL/Get
+شما با کمک این متد میتونید تفصیل های حسابداری را دریافت کنید
+Body Parameters
+{
+  "dlId": 0,
+  "code": "",
+  "title": "",
+  "type": 0,
+  "isActive": true,
+  "search": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» dlId	body	integer(int32)¦null	no	شناسه یک تفصیل(پیش فرض 0)
+» code	body	string¦null	no	کد یک تفصیل(پیش فرض خالی)
+» title	body	string¦null	no	عنوان یک تفصیل(پیش فرض خالی)
+» type	body	integer(int32)¦null	no	نوع یک تفصیل(پیش فرض 2)
+» isActive	body	boolean¦null	no	وضعیت یک تفصیل(پیش فرض true)
+» search	body	string¦null	no	جستجوی یک تفصیل(پیش فرض خالی)
+» sortBy	body	string¦null	no	مرتب سازی بر اساس فیلد ها
+» sortDesc	body	boolean	no	نزولی و صعودی
+» take	body	integer(int64)	yes	تعداد هر درخواست (پیش فرض 10)
+» skip	body	integer(int64)	yes	تعداد عبور کردن (پیش فرض )
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+Voucher
+
+POST Voucher_Save
+POST /api/v1/Voucher/Save
+Body Parameters
+{
+  "voucher": {
+    "voucherId": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "referenceNumber": 0,
+    "secondaryNumber": 0,
+    "state": 0,
+    "type": 0,
+    "fiscalYearRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "version": 0,
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "dailyNumber": 0,
+    "issuerSystem": 0,
+    "isMerged": true,
+    "mergedIssuerSystem": 0,
+    "voucherItems": [
+      {
+        "voucherItemId": 0,
+        "voucherRef": 0,
+        "rowNumber": 0,
+        "accountSLRef": 0,
+        "dlRef": 0,
+        "debit": 0,
+        "credit": 0,
+        "currencyRef": 0,
+        "currencyRate": 0,
+        "currencyDebit": 0,
+        "currencyCredit": 0,
+        "trackingNumber": "string",
+        "trackingDate": "2019-08-24T14:15:22Z",
+        "issuerEntityName": "string",
+        "issuerEntityRef": 0,
+        "description": "string",
+        "description_En": "string",
+        "version": 0
+      }
+    ]
+  },
+  "voucherItems": [
+    {
+      "voucherItemId": 0,
+      "voucherRef": 0,
+      "rowNumber": 0,
+      "accountSLRef": 0,
+      "dlRef": 0,
+      "debit": 0,
+      "credit": 0,
+      "currencyRef": 0,
+      "currencyRate": 0,
+      "currencyDebit": 0,
+      "currencyCredit": 0,
+      "trackingNumber": "string",
+      "trackingDate": "2019-08-24T14:15:22Z",
+      "issuerEntityName": "string",
+      "issuerEntityRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateVoucherRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST Voucher_Update
+POST /api/v1/Voucher/Update
+Body Parameters
+{
+  "voucher": {
+    "voucherId": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "referenceNumber": 0,
+    "secondaryNumber": 0,
+    "state": 0,
+    "type": 0,
+    "fiscalYearRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "version": 0,
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "dailyNumber": 0,
+    "issuerSystem": 0,
+    "isMerged": true,
+    "mergedIssuerSystem": 0,
+    "voucherItems": [
+      {
+        "voucherItemId": 0,
+        "voucherRef": 0,
+        "rowNumber": 0,
+        "accountSLRef": 0,
+        "dlRef": 0,
+        "debit": 0,
+        "credit": 0,
+        "currencyRef": 0,
+        "currencyRate": 0,
+        "currencyDebit": 0,
+        "currencyCredit": 0,
+        "trackingNumber": "string",
+        "trackingDate": "2019-08-24T14:15:22Z",
+        "issuerEntityName": "string",
+        "issuerEntityRef": 0,
+        "description": "string",
+        "description_En": "string",
+        "version": 0
+      }
+    ]
+  },
+  "voucherItems": [
+    {
+      "voucherItemId": 0,
+      "voucherRef": 0,
+      "rowNumber": 0,
+      "accountSLRef": 0,
+      "dlRef": 0,
+      "debit": 0,
+      "credit": 0,
+      "currencyRef": 0,
+      "currencyRate": 0,
+      "currencyDebit": 0,
+      "currencyCredit": 0,
+      "trackingNumber": "string",
+      "trackingDate": "2019-08-24T14:15:22Z",
+      "issuerEntityName": "string",
+      "issuerEntityRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateVoucherRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST Voucher_Delete
+POST /api/v1/Voucher/Delete
+Body Parameters
+{
+  "voucherId": 0,
+  "number": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteVoucherRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST Voucher_Get
+POST /api/v1/Voucher/Get
+Body Parameters
+{
+  "voucherId": 0,
+  "number": 0,
+  "referenceNumber": 0,
+  "secondaryNumber": 0,
+  "state": 0,
+  "type": 0,
+  "fiscalYearRef": 0,
+  "issuerSystem": 0,
+  "description": "string",
+  "fromDate": "2019-08-24T14:15:22Z",
+  "toDate": "2019-08-24T14:15:22Z",
+  "search": "string",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetVoucherRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+Configuration
+
+POST Configuration(تنظیمات سپیدار)
+POST /api/v1/Configuration/Get
+با این متد شما میتونید تنظیمات سپیدار را دریافت کنید
+Body Parameters
+{
+  "configurationID": 0,
+  "key": "",
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» configurationID	body	integer(int32)¦null	no	شناسه تنظیمات (پیش فرض 0)
+» key	body	string	no	کلید تنظیمات (پیش فرض خالی)
+» take	body	integer(int32)	no	تعداد درخواستی 10 عدد پیش فرض
+» skip	body	integer(int32)	no	تعداد صفحه بمدی خالی پیش فرض
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+ExtraData
+
+POST ExtraData(داده های اضافی)
+POST /api/v1/ExtraData/Get
+با این متد میتونیم داده های اضافی رو دریافت کنیم
+Body Parameters
+{
+  "extraDataID": 0,
+  "entityTypeName": "",
+  "entityRef": 0,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» extraDataID	body	integer(int32)¦null	no	شناسه داده های اضافی (پیش فرض 0)
+» entityTypeName	body	string	no	نوع داده های اضافی (پیش فرض 0)
+» entityRef	body	integer(int32)¦null	no	داده مرتبطت داده های اضافی (پیش فرض 0)
+» take	body	integer(int32)	no	مقدار درخواستی پیش فرض 10 عدد
+» skip	body	integer(int32)	no	مقدار عبوری پیش فرض 0 عدد
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+FiscalYear
+
+POST FiscalYear(سال)
+POST /api/v1/FiscalYear/Get
+با این مدت میتونید سال ها رو دریافت کنید
+Body Parameters
+{
+  "fiscalYearId": 0,
+  "title": "",
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» fiscalYearId	body	integer(int32)¦null	no	none
+» title	body	string	no	none
+» take	body	integer(int32)	yes	none
+» skip	body	integer(int32)	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+Currency
+
+POST Currency(واحد ارزی)
+POST /api/v1/Currency/Get
+با این متد میتونید واحد ارزی را دریافت کنید
+Body Parameters
+{
+  "search": "",
+  "currencyId": 0,
+  "sortBy": "string",
+  "sortDesc": false,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetCurrencyRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+Grouping
+
+POST Grouping(گروه ها)
+POST /api/v1/Grouping/Get
+Body Parameters
+{
+  "entityType": "",
+  "search": "",
+  "groupingId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetGroupingRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+Location
+
+POST Location(استان ها)
+POST /api/v1/Location/Get
+Body Parameters
+{
+  "search": "",
+  "locationId": 0,
+  "parent": 0,
+  "type": 2,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetLocationRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+PartyAddress
+
+POST PartyAddress(ذخیره و بروزرسانی آدرس مشتریان)
+POST /api/v1/PartyAddress/Save
+Body Parameters
+{
+  "partyAddress": {
+    "partyAddressId": 0,
+    "partyRef": 0,
+    "isMain": 0,
+    "type": 2,
+    "address": "",
+    "locationRef": 0,
+    "zipCode": ""
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» partyAddress	body	object	no	none
+»» partyAddressId	body	integer(int32)¦null	no	در هنگام ویرایش نیاز است پر شود در غیر این صورت خالی باشد
+»» partyRef	body	integer(int32)¦null	yes	none
+»» isMain	body	integer(int32)¦null	yes	none
+»» type	body	integer(int32)¦null	yes	none
+»» address	body	string¦null	yes	none
+»» locationRef	body	integer(int32)¦null	yes	none
+»» zipCode	body	string¦null	no	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST PartyAddress(حذف آدرس مشتریان)
+POST /api/v1/PartyAddress/Delete
+Body Parameters
+{
+  "partyAddress": {
+    "partyAddressId": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeletePartyAddressRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST PartyAddress(دریافت آدرس مشتریان)
+POST /api/v1/PartyAddress/Get
+Body Parameters
+{
+  "search": "",
+  "partyAddressId": 0,
+  "partyRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» search	body	string¦null	no	none
+» partyAddressId	body	integer(int32)¦null	no	none
+» partyRef	body	integer(int32)¦null	no	none
+» sortBy	body	string¦null	no	none
+» sortDesc	body	boolean	no	none
+» take	body	integer(int64)¦null	yes	none
+» skip	body	integer(int64)¦null	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+Party
+
+POST Party(ذخیره و بروزرسانی مشتریان)
+POST /api/v1/Party/Save
+Body Parameters
+{
+  "party": {
+    "partyId": 0,
+    "type": 0,
+    "name": "string",
+    "lastName": "string",
+    "economicCode": "string",
+    "identificationCode": "string",
+    "registrationCode": "string",
+    "isInBlacklist": true,
+    "isVendor": true,
+    "vendorGroupingRef": 0,
+    "isBroker": true,
+    "brokerGroupingRef": 0,
+    "creator": 0,
+    "isEmployee": true,
+    "isCustomer": true,
+    "discountRate": 0,
+    "phone": "string",
+    "configTypeParty": "string",
+    "address": "string",
+    "locationRef": 0,
+    "zipCode": "string"
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» party	body	object	no	none
+»» partyId	body	integer(int32)¦null	no	none
+»» type	body	integer(int32)¦null	no	none
+»» name	body	string¦null	no	none
+»» lastName	body	string¦null	no	none
+»» economicCode	body	string¦null	no	none
+»» identificationCode	body	string¦null	no	none
+»» registrationCode	body	string¦null	no	none
+»» isInBlacklist	body	boolean¦null	no	none
+»» isVendor	body	boolean¦null	no	none
+»» vendorGroupingRef	body	integer(int32)¦null	no	none
+»» isBroker	body	boolean¦null	no	none
+»» brokerGroupingRef	body	integer(int32)¦null	no	none
+»» creator	body	integer(int32)¦null	no	none
+»» isEmployee	body	boolean¦null	no	none
+»» isCustomer	body	boolean¦null	no	none
+»» discountRate	body	number(decimal)¦null	no	none
+»» phone	body	string¦null	no	none
+»» configTypeParty	body	string¦null	no	در صورتی که میخواید نام تفصیلی مشتری با ترکیب نام و نام خانوادگی + شماره موبایل باشه
+»» address	body	string¦null	no	none
+»» locationRef	body	integer(int32)¦null	no	none
+»» zipCode	body	string¦null	no	none
+Description
+»» configTypeParty: در صورتی که میخواید نام تفصیلی مشتری با ترکیب نام و نام خانوادگی + شماره موبایل باشه
+NameFamilyPhone
+در صورتی که میخواید نام تفصیلی مشتری با ترکیب نام و نام خانوادگی + کد تفصیلی باشه
+NameFamilyCode
+در صورتی که میخواید نام تفصیلی مشتری نام و نام خانوادگی باشه
+NameFamily
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST Party(حذف مشتریان)
+POST /api/v1/Party/Delete
+Body Parameters
+{
+  "number": 0,
+  "partyId": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DataModelsDeleteParty
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST Party(دریافت مشتریان)
+POST /api/v1/Party/Get
+Body Parameters
+{
+  "query": "party",
+  "search": "",
+  "partyPhone": "",
+  "partyIdentification": "",
+  "partyCode": "",
+  "partyName": "",
+  "partyLastName": "",
+  "partyId": 0,
+  "type": 1,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetPartyRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+PartyPhone
+
+POST PartyPhone(ذخیره و بروزرسانی تلفن مشتریان)
+POST /api/v1/PartyPhone/Save
+Body Parameters
+{
+  "partyPhone": {
+    "partyPhoneId": 0,
+    "partyRef": 0,
+    "isMain": 0,
+    "type": 2,
+    "phone": "09121234567"
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreatePartyPhoneRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST PartyPhone(حذف شماره مشتریان)
+POST /api/v1/PartyPhone/Delete
+Body Parameters
+{
+  "partyPhone": {
+    "phone": "string",
+    "partyPhoneId": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeletePartyPhoneRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST PartyPhone(دریافت شماره مشتریان)
+POST /api/v1/PartyPhone/Get
+Body Parameters
+{
+  "partyPhoneId": 0,
+  "partyRef": 0,
+  "search": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetPartyPhoneRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+InventoryDelivery
+
+POST InventoryDelivery_Save
+POST /api/v1/InventoryDelivery/Save
+Body Parameters
+{
+  "inventoryDelivery": {
+    "inventoryDeliveryID": 0,
+    "isReturn": false,
+    "type": 1,
+    "stockRef": 0,
+    "receiverDLRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "totalPrice": 0,
+    "destinationStockRef": 0,
+    "description": "",
+    "inventoryDeliveryItem": [
+      {
+        "isReturn": false,
+        "baseInvoiceItem": 0,
+        "baseInventoryDeliveryItem": 0,
+        "baseReturnedInvoiceItem": 0,
+        "quotationItemRef": 0,
+        "itemRef": 0,
+        "tracingRef": 0,
+        "quantity": 0,
+        "secondaryQuantity": 0,
+        "remainingQuantity": 0,
+        "remainingSecondaryQuantity": 0,
+        "price": 0,
+        "description": "",
+        "itemDescription": "",
+        "fee": 0
+      }
+    ]
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateInventoryDeliveryRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST InventoryDelivery_Delete
+POST /api/v1/InventoryDelivery/Delete
+Body Parameters
+{
+  "inventoryDelivery": {
+    "inventoryDeliveryID": 0,
+    "number": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteInventoryDeliveryRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+
+POST InventoryDelivery_Get
+POST /api/v1/InventoryDelivery/Get
+Body Parameters
+{
+  "inventoryDeliveryID": 0,
+  "isReturn": false,
+  "type": 1,
+  "stockRef": 0,
+  "receiverDLRef": 0,
+  "number": 0,
+  "destinationStockRef": 0,
+  "baseInvoiceItem": 0,
+  "baseInventoryDeliveryItem": 0,
+  "baseReturnedInvoiceItem": 0,
+  "quotationItemRef": 0,
+  "itemRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetInventoryDeliveryRequest
+yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK
+none	string
+InventoryPurchaseInvoice
+
+POST InventoryPurchaseInvoice_Save
+POST /api/v1/InventoryPurchaseInvoice/Save
+Body Parameters
+{
+  "inventoryPurchaseInvoice": {
+    "inventoryPurchaseInvoiceID": 0,
+    "vendorDLRef": 0,
+    "number": 0,
+    "invoiceNumber": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "currencyRate": 0,
+    "totalPrice": 0,
+    "totalPriceInBaseCurrency": 0,
+    "totalTax": 0,
+    "totalDuty": 0,
+    "totalTransportPrice": 0,
+    "totalNetPrice": 0,
+    "totalNetPriceInBaseCurrency": 0,
+    "paymentHeaderRef": 0,
+    "type": 0,
+    "partyAddressRef": 0,
+    "description": "string",
+    "inventoryPurchaseInvoiceItem": [
+      {
+        "rowNumber": 0,
+        "itemRef": 0,
+        "quantity": 0,
+        "secondaryQuantity": 0,
+        "remainingQuantity": 0,
+        "remainingSecondaryQuantity": 0,
+        "currencyRate": 0,
+        "fee": 0,
+        "feeInBaseCurrency": 0,
+        "price": 0,
+        "priceInBaseCurrency": 0,
+        "discount": 0,
+        "discountInBaseCurrentcy": 0,
+        "addition": 0,
+        "additionInBaseCurrency": 0,
+        "tax": 0,
+        "taxInBaseCurrency": 0,
+        "duty": 0,
+        "dutyInBaseCurrency": 0,
+        "transportPrice": 0,
+        "transportTax": 0,
+        "transportDuty": 0,
+        "transportDescription": "string",
+        "netPriceInBaseCurrency": 0,
+        "description": "string"
+      }
+    ]
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateInventoryPurchaseInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST InventoryPurchaseInvoice_Delete
+POST /api/v1/InventoryPurchaseInvoice/Delete
+Body Parameters
+{
+  "purchaseInvoice": {
+    "inventoryPurchaseInvoiceID": 0,
+    "number": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteInventoryPurchaseInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST InventoryPurchaseInvoice_Get
+POST /api/v1/InventoryPurchaseInvoice/Get
+Body Parameters
+{
+  "inventoryPurchaseInvoiceID": 0,
+  "vendorDLRef": 0,
+  "number": 0,
+  "invoiceNumber": 0,
+  "type": 1,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetInventoryPurchaseInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+InventoryReceipt
+
+POST InventoryReceipt_Save
+POST /api/v1/InventoryReceipt/Save
+Body Parameters
+{
+  "receipt": {
+    "inventoryReceiptID": 0,
+    "isReturn": true,
+    "type": 0,
+    "purchaseType": 0,
+    "stockRef": 0,
+    "delivererDLRef": 0,
+    "slAccountRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "accountingVoucherRef": 0,
+    "paymentHeaderRef": 0,
+    "transportBrokerSLAccountRef": 0,
+    "transporterDLRef": 0,
+    "totalPrice": 0,
+    "totalTax": 0,
+    "totalDuty": 0,
+    "totalTransportPrice": 0,
+    "totalNetPrice": 0,
+    "basePurchaseInvoiceRef": 0,
+    "baseInventoryDeliveryRef": 0,
+    "baseImportPurchaseInvoiceRef": 0,
+    "description": "string",
+    "totalReturnedPrice": 0,
+    "totalReturnedNetPrice": 0,
+    "totalOtherCost": 0,
+    "isWastage": true,
+    "inventoryReceiptItem": [
+      {
+        "isReturn": true,
+        "rowNumber": 0,
+        "base": 0,
+        "returnBase": 0,
+        "itemRef": 0,
+        "tracingRef": 0,
+        "quantity": 0,
+        "secondaryQuantity": 0,
+        "remainingQuantity": 0,
+        "remainingSecondaryQuantity": 0,
+        "currencyRef": 0,
+        "currencyRate": 0,
+        "currencyValue": 0,
+        "price": 0,
+        "tax": 0,
+        "taxCurrencyValue": 0,
+        "duty": 0,
+        "dutyCurrencyValue": 0,
+        "transportPrice": 0,
+        "transportTax": 0,
+        "transportDuty": 0,
+        "transportDescription": "string",
+        "description": "string",
+        "basePurchaseInvoiceItemRef": 0,
+        "baseImportPurchaseInvoiceItemRef": 0,
+        "fee": 0,
+        "returnedFee": 0,
+        "returnedNetPrice": 0
+      }
+    ]
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateInventoryReceiptRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST InventoryReceipt_Delete
+POST /api/v1/InventoryReceipt/Delete
+Body Parameters
+{
+  "receipt": {
+    "inventoryReceiptID": 0,
+    "number": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteInventoryReceiptRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST InventoryReceipt_Get
+POST /api/v1/InventoryReceipt/Get
+Body Parameters
+{
+  "inventoryReceiptID": 0,
+  "isReturn": false,
+  "type": 1,
+  "stockRef": 0,
+  "delivererDLRef": 0,
+  "number": 0,
+  "itemRef": 0,
+  "tracingRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetInventoryReceiptRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Item
+
+POST Item(ایجاد و بروزرسانی کالا)
+POST /api/v1/Item/Save
+Body Parameters
+{
+  "item": {
+    "itemID": 0,
+    "type": 1,
+    "code": "",
+    "title": "",
+    "barCode": "",
+    "unitRef": 0,
+    "secondaryUnitRef": 0,
+    "unitsRatio": 0,
+    "sellable": true,
+    "defaultStockRef": 0,
+    "purchaseGroupRef": 0,
+    "saleGroupRef": 0,
+    "isActive": true
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateItemRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Item(حذف کالا)
+POST /api/v1/Item/Delete
+Body Parameters
+{
+  "item": {
+    "itemID": 0,
+    "code": ""
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteItemRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Item(دریافت کالا / قیمت / موجودی)
+POST /api/v1/Item/Get
+توضیحات مطالعه شود
+Body Parameters
+{
+  "itemID": 0,
+  "type": 1,
+  "code": "",
+  "title": "",
+  "barCode": "",
+  "unitRef": 0,
+  "sellable": true,
+  "stockRef": 0,
+  "purchaseGroupRef": 0,
+  "saleGroupRef": 0,
+  "saleTypeRef": 0,
+  "isActive": true,
+  "query": "ItemStockPrice",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» itemID	body	integer(int32)¦null	no	none
+» type	body	integer(int32)¦null	no	none
+» code	body	string¦null	no	none
+» title	body	string¦null	no	none
+» barCode	body	string¦null	no	none
+» unitRef	body	integer(int32)¦null	no	none
+» sellable	body	boolean¦null	no	none
+» stockRef	body	integer(int32)¦null	no	none
+» purchaseGroupRef	body	integer(int32)¦null	no	none
+» saleGroupRef	body	integer(int32)¦null	no	none
+» saleTypeRef	body	integer(int32)¦null	no	none
+» isActive	body	boolean¦null	no	none
+» query	body	string¦null	no	در صورتی که میخواهید کالا ها + موجودی + قیمت را دریافت کنید
+» sortBy	body	string¦null	no	none
+» sortDesc	body	boolean	no	none
+» take	body	integer(int64)¦null	no	none
+» skip	body	integer(int64)¦null	no	none
+Description
+» query: در صورتی که میخواهید کالا ها + موجودی + قیمت را دریافت کنید
+ItemStockPrice
+در صورتی که میخواهید کالا ها + موجودی را دریافت کنید
+ItemStock
+در صورتی که میخواهید کالا ها را دریافت کنید
+Item
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+ItemStock
+
+POST ItemStock(دریافت ارتباط انبار با کالا)
+POST /api/v1/ItemStock/Get
+Body Parameters
+{
+  "itemRef": 0,
+  "stockRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetItemStockRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+ItemStockSummary
+
+POST ItemStockSummary(صورت وضعیت کالا و موجودی انبار)
+POST /api/v1/ItemStockSummary/Get
+Body Parameters
+{
+  "stockRef": 0,
+  "itemRef": 0,
+  "tracingRef": 0,
+  "unitRef": 0,
+  "fiscalYearRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetItemStockSummaryRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Stock
+
+POST Stock(ایجاد و بروزرسانی انبار)
+POST /api/v1/Stock/Save
+Body Parameters
+{
+  "stock": {
+    "stockID": 0,
+    "code": "",
+    "title": ""
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateStockRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Stock(حذف انبار)
+POST /api/v1/Stock/Delete
+Body Parameters
+{
+  "stock": {
+    "stockID": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteStockRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Stock(دریافت انبار)
+POST /api/v1/Stock/Get
+Body Parameters
+{
+  "stockID": 0,
+  "code": "",
+  "title": "",
+  "isActive": true,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetStockRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Unit
+
+POST Unit(ایجاد و بروزرسانی واحد اندازه گیری)
+POST /api/v1/Unit/Save
+Body Parameters
+{
+  "unit": {
+    "unitID": 0,
+    "title": ""
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateUnitRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Unit(حذف واحد اندازه گیری)
+POST /api/v1/Unit/Delete
+Body Parameters
+{
+  "unit": {
+    "unitID": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteUnitRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Unit(دریافت واحد اندازه گیری)
+POST /api/v1/Unit/Get
+Body Parameters
+{
+  "unitID": 0,
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetUnitRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+BankAccount
+
+POST BankAccount(دریافت حساب های بانکی)
+POST /api/v1/BankAccount/Get
+Body Parameters
+{
+  "bankAccountId": 0,
+  "bankBranchRef": 0,
+  "accountNo": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetBankAccountRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+BankBranch
+
+POST BankBranch(دریافت شعبه بانک ها)
+POST /api/v1/BankBranch/Get
+Body Parameters
+{
+  "bankBranchId": 0,
+  "bankRef": 0,
+  "code": "",
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetBankBranchRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Bank
+
+POST Bank(دریافت بانک)
+POST /api/v1/Bank/Get
+Body Parameters
+{
+  "bankId": 0,
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetBankRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Cash
+
+POST Cash(دریافت صندوق)
+POST /api/v1/Cash/Get
+Body Parameters
+{
+  "cashId": 0,
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetCashRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Payment
+
+POST Payment(ایجاد و بروزرسانی رسید پرداخت)
+POST /api/v1/Payment/Save
+Body Parameters
+{
+  "payment": {
+    "paymentHeaderId": 0,
+    "type": 0,
+    "accountSlRef": 0,
+    "dlRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "discount": 0,
+    "totalAmount": 0,
+    "itemType": 0,
+    "state": 0,
+    "creatorForm": "string",
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "version": 0,
+    "rate": 0,
+    "cashRef": 0,
+    "amount": 0,
+    "amountInBaseCurrency": 0,
+    "receiptHeaderRef": 0,
+    "fiscalYearRef": 0,
+    "voucherRef": 0,
+    "discountRate": 0,
+    "discountInBaseCurrency": 0,
+    "bankFeeSlRef": 0,
+    "totalAmountInBaseCurrency": 0
+  },
+  "paymentCheques": [
+    {
+      "paymentChequeId": 0,
+      "number": "string",
+      "secondNumber": "string",
+      "isGuarantee": true,
+      "amount": 0,
+      "date": "2019-08-24T14:15:22Z",
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "state": 0,
+      "paymentHeaderRef": 0,
+      "bankAccountRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "durationType": 0,
+      "dlRef": 0,
+      "type": 0,
+      "sayadCode": "string"
+    }
+  ],
+  "paymentDrafts": [
+    {
+      "paymentDraftId": 0,
+      "number": "string",
+      "date": "2019-08-24T14:15:22Z",
+      "amount": 0,
+      "bankAccountRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "paymentHeaderRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "bankFeeAmount": 0,
+      "bankFeeAmountInBaseCurrency": 0,
+      "bankFeeAmountRate": 0
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreatePaymentRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Payment(حذف رسید پرداخت)
+POST /api/v1/Payment/Delete
+Body Parameters
+{
+  "payment": {
+    "paymentHeaderId": 0,
+    "number": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeletePaymentRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Payment(دریافت رسید پرداخت)
+POST /api/v1/Payment/Get
+Body Parameters
+{
+  "paymentHeaderId": 0,
+  "number": 0,
+  "dlRef": 0,
+  "currencyRef": 0,
+  "fiscalYearRef": 0,
+  "type": 0,
+  "state": 0,
+  "itemType": 0,
+  "cashRef": 0,
+  "accountSlRef": 0,
+  "voucherRef": 0,
+  "receiptHeaderRef": 0,
+  "creatorForm": "string",
+  "search": "string",
+  "fromDate": "2019-08-24T14:15:22Z",
+  "toDate": "2019-08-24T14:15:22Z",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetPaymentRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Pos
+
+POST Pos(دریافت دستگاه پز)
+POST /api/v1/Pos/Get
+Body Parameters
+{
+  "posId": 0,
+  "bankAccountRef": 0,
+  "terminalNo": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetPosRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Receipt
+
+POST Receipt(ایجاد و بروزرسانی رسید دریافت)
+POST /api/v1/Receipt/Save
+Body Parameters
+{
+  "receiptHeader": {
+    "receiptHeaderId": 0,
+    "type": 0,
+    "accountSlRef": 0,
+    "dlRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "discount": 0,
+    "totalAmount": 0,
+    "itemType": 0,
+    "state": 0,
+    "creatorForm": "string",
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "version": 0,
+    "rate": 0,
+    "cashRef": 0,
+    "amount": 0,
+    "amountInBaseCurrency": 0,
+    "fiscalYearRef": 0,
+    "voucherRef": 0,
+    "discountRate": 0,
+    "discountInBaseCurrency": 0,
+    "guid": "string",
+    "totalAmountInBaseCurrency": 0
+  },
+  "receiptCheques": [
+    {
+      "receiptChequeId": 0,
+      "number": "string",
+      "secondNumber": "string",
+      "isGuarantee": true,
+      "accountNo": "string",
+      "amount": 0,
+      "date": "2019-08-24T14:15:22Z",
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "state": 0,
+      "cashRef": 0,
+      "receiptHeaderRef": 0,
+      "bankRef": 0,
+      "branchCode": "string",
+      "branchTitle": "string",
+      "locationRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "bankBranchRef": 0,
+      "dlRef": 0,
+      "type": 0,
+      "initState": 0,
+      "sayadCode": "string",
+      "chequeOwner": "string"
+    }
+  ],
+  "receiptDrafts": [
+    {
+      "receiptDraftId": 0,
+      "number": "string",
+      "date": "2019-08-24T14:15:22Z",
+      "amount": 0,
+      "bankAccountRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "receiptHeaderRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0
+    }
+  ],
+  "receiptPoses": [
+    {
+      "receiptPosId": 0,
+      "posRef": 0,
+      "amount": 0,
+      "state": 0,
+      "version": 0,
+      "receiptHeaderRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "trackingCode": "string"
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateReceiptHeaderRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Receipt(حذف رسید دریافت)
+POST /api/v1/Receipt/Delete
+Body Parameters
+{
+  "receiptHeader": {
+    "receiptHeaderId": 0,
+    "number": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteReceiptHeaderRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Receipt(دریافت رسید دریافت)
+POST /api/v1/Receipt/Get
+Body Parameters
+{
+  "receiptHeaderId": 0,
+  "number": 0,
+  "dlRef": 0,
+  "type": 0,
+  "state": 0,
+  "currencyRef": 0,
+  "fiscalYearRef": 0,
+  "dateFrom": "2019-08-24T14:15:22Z",
+  "dateTo": "2019-08-24T14:15:22Z",
+  "description": "string",
+  "creatorForm": "string",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetReceiptHeaderRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Invoice
+
+POST Invoice(ایجاد و بروزرسانی فاکتور)
+POST /api/v1/Invoice/Save
+Body Parameters
+{
+  "invoice": {
+    "invoiceID": 0,
+    "quotationRef": 0,
+    "customerPartyRef": 0,
+    "customerRealName": "string",
+    "customerPartyPhone": "string",
+    "customerPartyIdentificationCode": "string",
+    "customerPartyCode": "string",
+    "saleTypeRef": 0,
+    "partyAddressRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "price": 0,
+    "priceInBaseCurrency": 0,
+    "discount": 0,
+    "discountInBaseCurrency": 0,
+    "dutyInBaseCurrency": 0,
+    "duty": 0,
+    "addition": 0,
+    "additionInBaseCurrency": 0,
+    "tax": 0,
+    "taxInBaseCurrency": 0,
+    "rate": 0,
+    "creator": 0,
+    "fiscalYearRef": 0,
+    "slRef": 0,
+    "description": "string",
+    "netPrice": 0
+  },
+  "invoiceItems": [
+    {
+      "rowID": 0,
+      "itemRef": 0,
+      "itemCode": "string",
+      "tracingRef": 0,
+      "stockRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "fee": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrency": 0,
+      "customerDiscount": 0,
+      "customerDiscountRate": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "duty": 0,
+      "taxInBaseCurrency": 0,
+      "dutyInBaseCurrency": 0,
+      "rate": 0,
+      "quotationItemRef": 0,
+      "description": "string",
+      "netPrice": 0
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Invoice(حذف فاکتور)
+POST /api/v1/Invoice/Delete
+Body Parameters
+{
+  "invoice": {
+    "number": 0,
+    "quotationId": 0,
+    "invoiceId": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Invoice(دریافت فاکتور ها)
+POST /api/v1/Invoice/Get
+Body Parameters
+{
+  "number": 0,
+  "customerPattyRef": 0,
+  "customerPartyCode": "string",
+  "quotationId": 0,
+  "invoiceId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+PriceNoteItem
+
+POST PriceNoteItem(دریافت کالا و لیست قیمت)
+POST /api/v1/PriceNoteItem/Get
+Body Parameters
+{
+  "number": 0,
+  "itemRef": 0,
+  "saleTypeRef": 0,
+  "priceNoteItemID": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetPriceNoteItemRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Quotation
+
+POST Quotation(ایجاد و بروزرسانی پیش فاکتور)
+POST /api/v1/Quotation/Save
+:::highlight blue 💡 این متد برای ایجاد پیش فاکتور تهیه شده است که شما میتوانید با استفاده از داده های ارسالی صحیح و مناسب یک پیش فاکتور در سیستم حسابداری سپیدار ایجاد کنید :::
+Body Parameters
+{
+  "quotation": {
+    "quotationID": 0,
+    "customerPartyRef": 0,
+    "customerPartyCode": "string",
+    "customerPartyPhone": "string",
+    "customerPartyIdentificationCode": "string",
+    "customerRealName": "string",
+    "saleTypeRef": 0,
+    "partyAddressRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "expirationDate": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "price": 0,
+    "priceInBaseCurrency": 0,
+    "discount": 0,
+    "discountInBaseCurrency": 0,
+    "addition": 0,
+    "additionInBaseCurrency": 0,
+    "tax": 0,
+    "taxInBaseCurrency": 0,
+    "duty": 0,
+    "dutyInBaseCurrency": 0,
+    "netPrice": 0,
+    "rate": 0,
+    "creator": 0,
+    "closed": true,
+    "fiscalYearRef": 0
+  },
+  "quotationItems": [
+    {
+      "itemRef": 0,
+      "itemCode": "string",
+      "tracingRef": 0,
+      "rowID": 0,
+      "stockRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "fee": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrency": 0,
+      "customerDiscount": 0,
+      "customerDiscountRate": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "taxInBaseCurrency": 0,
+      "duty": 0,
+      "dutyInBaseCurrency": 0,
+      "netPrice": 0,
+      "rate": 0,
+      "usedQuantity": 0,
+      "dutyRate": 0,
+      "taxRate": 0,
+      "description": "string"
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateQuotationRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Quotation(حذف پیش فاکتور)
+POST /api/v1/Quotation/Delete
+Body Parameters
+{
+  "quotation": {
+    "number": 0,
+    "quotationId": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteQuotationRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST Quotation(دریافت پیش فاکتور)
+POST /api/v1/Quotation/Get
+Body Parameters
+{
+  "number": 0,
+  "customerPattyRef": 0,
+  "customerPartyCode": "string",
+  "quotationId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetQuotationRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST QuotationToInvoice(تبدیل پیش فاکتور به فاکتور)
+POST /api/v1/Quotation/ToInvoice
+Body Parameters
+{
+  "number": 0,
+  "customerPattyRef": 0,
+  "customerPartyCode": "string",
+  "quotationId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetQuotationRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+ReturnedInvoice
+
+POST ReturnedInvoice(ایجاد و بروزرسانی فاکتور بازگشت از فروش)
+POST /api/v1/ReturnedInvoice/Save
+Body Parameters
+{
+  "returnedInvoice": {
+    "returnedInvoiceId": 0,
+    "quotationRef": 0,
+    "customerPartyRef": 0,
+    "customerRealName": "string",
+    "customerPartyPhone": "string",
+    "customerPartyIdentificationCode": "string",
+    "customerPartyCode": "string",
+    "saleTypeRef": 0,
+    "partyAddressRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "slRef": 0,
+    "price": 0,
+    "discount": 0,
+    "addition": 0,
+    "tax": 0,
+    "duty": 0,
+    "priceInBaseCurrency": 0,
+    "discountInBaseCurrency": 0,
+    "additionInBaseCurrency": 0,
+    "taxInBaseCurrency": 0,
+    "dutyInBaseCurrency": 0,
+    "rate": 0,
+    "netPrice": 0,
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "fiscalYearRef": 0,
+    "description": "string"
+  },
+  "returnedInvoiceItem": [
+    {
+      "rowID": 0,
+      "itemRef": 0,
+      "itemCode": "string",
+      "tracingRef": 0,
+      "stockRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "fee": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrency": 0,
+      "customerDiscount": 0,
+      "customerDiscountRate": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "duty": 0,
+      "taxInBaseCurrency": 0,
+      "dutyInBaseCurrency": 0,
+      "rate": 0,
+      "quotationItemRef": 0,
+      "description": "string",
+      "netPrice": 0
+    }
+  ]
+}
+Params
+Name	Location	Type	Required	Description
+body	body	CreateReturnedInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST ReturnedInvoice(حذف فاکتور بازگشت از فروش)
+POST /api/v1/ReturnedInvoice/Delete
+Body Parameters
+{
+  "returnedInvoice": {
+    "number": 0,
+    "quotationId": 0,
+    "returnedInvoiceID": 0
+  }
+}
+Params
+Name	Location	Type	Required	Description
+body	body	DeleteReturnedInvoiceRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+
+POST ReturnedInvoice(دریافت فاکتور بازگشت از فروش)
+POST /api/v1/ReturnedInvoice/Get
+Body Parameters
+{
+  "number": 0,
+  "customerPattyRef": 0,
+  "customerPartyCode": "string",
+  "quotationId": 0,
+  "returnedInvoiceId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+» number	body	integer(int32)¦null	no	none
+» customerPattyRef	body	integer(int32)¦null	no	none
+» customerPartyCode	body	string¦null	no	none
+» quotationId	body	integer(int32)¦null	no	none
+» returnedInvoiceId	body	integer(int32)¦null	no	none
+» sortBy	body	string¦null	no	none
+» sortDesc	body	boolean	no	none
+» take	body	integer(int64)¦null	yes	none
+» skip	body	integer(int64)¦null	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+SaleType
+
+POST SaleType(نوع فروش)
+POST /api/v1/SaleType/Get
+Body Parameters
+{
+  "number": 0,
+  "saleTypeId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+Params
+Name	Location	Type	Required	Description
+body	body	GetSaleTypeRequest	yes	none
+Response Examples
+200 Response
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	string
+Login
+POST Auth
+POST /api/auth/authentication/Login
+Body Parameters
+{
+  "username": "admin",
+  "password": "1234"
+}
+Params
+Name	Location	Type	Required	Description
+body	body	object	yes	none
+Response Examples
+200 Response
+{}
+Responses
+HTTP Status Code	Meaning	Description	Data schema
+200	OK	none	Inline
+Responses Data Schema
+Data Schema
+   
+{
+  "voucher": {
+    "voucherId": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "referenceNumber": 0,
+    "secondaryNumber": 0,
+    "state": 0,
+    "type": 0,
+    "fiscalYearRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "version": 0,
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "dailyNumber": 0,
+    "issuerSystem": 0,
+    "isMerged": true,
+    "mergedIssuerSystem": 0,
+    "voucherItems": [
+      {
+        "voucherItemId": 0,
+        "voucherRef": 0,
+        "rowNumber": 0,
+        "accountSLRef": 0,
+        "dlRef": 0,
+        "debit": 0,
+        "credit": 0,
+        "currencyRef": 0,
+        "currencyRate": 0,
+        "currencyDebit": 0,
+        "currencyCredit": 0,
+        "trackingNumber": "string",
+        "trackingDate": "2019-08-24T14:15:22Z",
+        "issuerEntityName": "string",
+        "issuerEntityRef": 0,
+        "description": "string",
+        "description_En": "string",
+        "version": 0
+      }
+    ]
+  },
+  "voucherItems": [
+    {
+      "voucherItemId": 0,
+      "voucherRef": 0,
+      "rowNumber": 0,
+      "accountSLRef": 0,
+      "dlRef": 0,
+      "debit": 0,
+      "credit": 0,
+      "currencyRef": 0,
+      "currencyRate": 0,
+      "currencyDebit": 0,
+      "currencyCredit": 0,
+      "trackingNumber": "string",
+      "trackingDate": "2019-08-24T14:15:22Z",
+      "issuerEntityName": "string",
+      "issuerEntityRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+voucher	DataModelsVoucher	false	none		none
+voucherItems	[DataModelsVoucherItem]
+false	none		none
+   
+{
+  "voucherId": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "referenceNumber": 0,
+  "secondaryNumber": 0,
+  "state": 0,
+  "type": 0,
+  "fiscalYearRef": 0,
+  "description": "string",
+  "description_En": "string",
+  "version": 0,
+  "creator": 0,
+  "creationDate": "2019-08-24T14:15:22Z",
+  "lastModifier": 0,
+  "lastModificationDate": "2019-08-24T14:15:22Z",
+  "dailyNumber": 0,
+  "issuerSystem": 0,
+  "isMerged": true,
+  "mergedIssuerSystem": 0,
+  "voucherItems": [
+    {
+      "voucherItemId": 0,
+      "voucherRef": 0,
+      "rowNumber": 0,
+      "accountSLRef": 0,
+      "dlRef": 0,
+      "debit": 0,
+      "credit": 0,
+      "currencyRef": 0,
+      "currencyRate": 0,
+      "currencyDebit": 0,
+      "currencyCredit": 0,
+      "trackingNumber": "string",
+      "trackingDate": "2019-08-24T14:15:22Z",
+      "issuerEntityName": "string",
+      "issuerEntityRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+voucherId	integer(int32)	false	none		none
+number	integer(int32)	false	none		none
+date	string(date-time)	false	none		none
+referenceNumber	integer(int32)	false	none		none
+secondaryNumber	integer(int32)¦null	false	none		none
+state	integer(int32)	false	none		none
+type	integer(int32)	false	none		none
+fiscalYearRef	integer(int32)	false	none		none
+description	string¦null	false	none		none
+description_En	string¦null	false	none		none
+version	integer(int32)	false	none		none
+creator	integer(int32)	false	none		none
+creationDate	string(date-time)	false	none		none
+lastModifier	integer(int32)	false	none		none
+lastModificationDate	string(date-time)	false	none		none
+dailyNumber	integer(int32)	false	none		none
+issuerSystem	integer(int32)	false	none		none
+isMerged	boolean	false	none		none
+mergedIssuerSystem	integer(int32)¦null	false	none		none
+voucherItems	[DataModelsVoucherItem]¦null	false	none		none
+   
+{
+  "voucherItemId": 0,
+  "voucherRef": 0,
+  "rowNumber": 0,
+  "accountSLRef": 0,
+  "dlRef": 0,
+  "debit": 0,
+  "credit": 0,
+  "currencyRef": 0,
+  "currencyRate": 0,
+  "currencyDebit": 0,
+  "currencyCredit": 0,
+  "trackingNumber": "string",
+  "trackingDate": "2019-08-24T14:15:22Z",
+  "issuerEntityName": "string",
+  "issuerEntityRef": 0,
+  "description": "string",
+  "description_En": "string",
+  "version": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+voucherItemId	integer(int32)	false	none		none
+voucherRef	integer(int32)	false	none		none
+rowNumber	integer(int32)	false	none		none
+accountSLRef	integer(int32)	false	none		none
+dlRef	integer(int32)¦null	false	none		none
+debit	number(decimal)¦null	false	none		none
+credit	number(decimal)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+currencyRate	number(decimal)¦null	false	none		none
+currencyDebit	number(decimal)¦null	false	none		none
+currencyCredit	number(decimal)¦null	false	none		none
+trackingNumber	string¦null	false	none		none
+trackingDate	string(date-time)¦null	false	none		none
+issuerEntityName	string	false	none		none
+issuerEntityRef	integer(int32)	false	none		none
+description	string	false	none		none
+description_En	string	false	none		none
+version	integer(int32)	false	none		none
+   
+{
+  "voucherId": 0,
+  "number": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+voucherId	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+   
+{
+  "voucherId": 0,
+  "number": 0,
+  "referenceNumber": 0,
+  "secondaryNumber": 0,
+  "state": 0,
+  "type": 0,
+  "fiscalYearRef": 0,
+  "issuerSystem": 0,
+  "description": "string",
+  "fromDate": "2019-08-24T14:15:22Z",
+  "toDate": "2019-08-24T14:15:22Z",
+  "search": "string",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+voucherId	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+referenceNumber	integer(int32)¦null	false	none		none
+secondaryNumber	integer(int32)¦null	false	none		none
+state	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+issuerSystem	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+fromDate	string(date-time)¦null	false	none		none
+toDate	string(date-time)¦null	false	none		none
+search	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)	false	none		none
+skip	integer(int64)	false	none		none
+   
+{
+  "search": "",
+  "currencyId": 0,
+  "sortBy": "string",
+  "sortDesc": false,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+search	string¦null	false	none		none
+currencyId	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "entityType": "",
+  "search": "",
+  "groupingId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+entityType	string¦null	false	none		none
+search	string¦null	false	none		none
+groupingId	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "search": "",
+  "locationId": 0,
+  "parent": 0,
+  "type": 2,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+search	string¦null	false	none		none
+locationId	integer(int32)¦null	false	none		none
+parent	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "partyAddress": {
+    "partyAddressId": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+partyAddress	DataModelsDeletePartyAddress	false	none		none
+   
+{
+  "partyAddressId": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+partyAddressId	integer(int32)¦null	false	none		none
+   
+{
+  "number": 0,
+  "partyId": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+partyId	integer(int32)¦null	false	none		none
+   
+{
+  "query": "party",
+  "search": "",
+  "partyPhone": "",
+  "partyIdentification": "",
+  "partyCode": "",
+  "partyName": "",
+  "partyLastName": "",
+  "partyId": 0,
+  "type": 1,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+query	string¦null	false	none		none
+search	string¦null	false	none		none
+partyPhone	string¦null	false	none		none
+partyIdentification	string¦null	false	none		none
+partyCode	string¦null	false	none		none
+partyName	string¦null	false	none		none
+partyLastName	string¦null	false	none		none
+partyId	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "partyPhone": {
+    "partyPhoneId": 0,
+    "partyRef": 0,
+    "isMain": 0,
+    "type": 2,
+    "phone": "09121234567"
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+partyPhone	DataModelsCreatePartyPhone	false	none		none
+   
+{
+  "partyPhoneId": 0,
+  "partyRef": 0,
+  "isMain": 0,
+  "type": 2,
+  "phone": "09121234567"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+partyPhoneId	integer(int32)¦null	false	none		none
+partyRef	integer(int32)¦null	false	none		none
+isMain	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+phone	string¦null	false	none		none
+   
+{
+  "partyPhone": {
+    "phone": "string",
+    "partyPhoneId": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+partyPhone	DataModelsDeletePartyPhone	false	none		none
+   
+{
+  "phone": "string",
+  "partyPhoneId": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+phone	string¦null	false	none		none
+partyPhoneId	integer(int32)¦null	false	none		none
+   
+{
+  "partyPhoneId": 0,
+  "partyRef": 0,
+  "search": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+partyPhoneId	integer(int32)¦null	false	none		none
+partyRef	integer(int32)¦null	false	none		none
+search	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "inventoryDelivery": {
+    "inventoryDeliveryID": 0,
+    "isReturn": false,
+    "type": 1,
+    "stockRef": 0,
+    "receiverDLRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "totalPrice": 0,
+    "destinationStockRef": 0,
+    "description": "",
+    "inventoryDeliveryItem": [
+      {
+        "isReturn": false,
+        "baseInvoiceItem": 0,
+        "baseInventoryDeliveryItem": 0,
+        "baseReturnedInvoiceItem": 0,
+        "quotationItemRef": 0,
+        "itemRef": 0,
+        "tracingRef": 0,
+        "quantity": 0,
+        "secondaryQuantity": 0,
+        "remainingQuantity": 0,
+        "remainingSecondaryQuantity": 0,
+        "price": 0,
+        "description": "",
+        "itemDescription": "",
+        "fee": 0
+      }
+    ]
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryDelivery	DataModelsCreateInventoryDelivery	false	none		none
+   
+{
+  "inventoryDeliveryID": 0,
+  "isReturn": false,
+  "type": 1,
+  "stockRef": 0,
+  "receiverDLRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "totalPrice": 0,
+  "destinationStockRef": 0,
+  "description": "",
+  "inventoryDeliveryItem": [
+    {
+      "isReturn": false,
+      "baseInvoiceItem": 0,
+      "baseInventoryDeliveryItem": 0,
+      "baseReturnedInvoiceItem": 0,
+      "quotationItemRef": 0,
+      "itemRef": 0,
+      "tracingRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "remainingQuantity": 0,
+      "remainingSecondaryQuantity": 0,
+      "price": 0,
+      "description": "",
+      "itemDescription": "",
+      "fee": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryDeliveryID	integer(int32)¦null	false	none		none
+isReturn	boolean¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+receiverDLRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+totalPrice	number(decimal)¦null	false	none		none
+destinationStockRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+inventoryDeliveryItem	[DataModelsCreateInventoryDeliveryItem]¦null	false	none		none
+   
+{
+  "isReturn": false,
+  "baseInvoiceItem": 0,
+  "baseInventoryDeliveryItem": 0,
+  "baseReturnedInvoiceItem": 0,
+  "quotationItemRef": 0,
+  "itemRef": 0,
+  "tracingRef": 0,
+  "quantity": 0,
+  "secondaryQuantity": 0,
+  "remainingQuantity": 0,
+  "remainingSecondaryQuantity": 0,
+  "price": 0,
+  "description": "",
+  "itemDescription": "",
+  "fee": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+isReturn	boolean¦null	false	none		none
+baseInvoiceItem	integer(int32)¦null	false	none		none
+baseInventoryDeliveryItem	integer(int32)¦null	false	none		none
+baseReturnedInvoiceItem	integer(int32)¦null	false	none		none
+quotationItemRef	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+quantity	number(decimal)¦null	false	none		none
+secondaryQuantity	number(decimal)¦null	false	none		none
+remainingQuantity	number(decimal)¦null	false	none		none
+remainingSecondaryQuantity	number(decimal)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+description	string¦null	false	none		none
+itemDescription	string¦null	false	none		none
+fee	number(decimal)¦null	false	none		none
+   
+{
+  "inventoryDelivery": {
+    "inventoryDeliveryID": 0,
+    "number": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryDelivery	DataModelsDeleteInventoryDelivery	false	none		none
+   
+{
+  "inventoryDeliveryID": 0,
+  "number": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryDeliveryID	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+   
+{
+  "inventoryDeliveryID": 0,
+  "isReturn": false,
+  "type": 1,
+  "stockRef": 0,
+  "receiverDLRef": 0,
+  "number": 0,
+  "destinationStockRef": 0,
+  "baseInvoiceItem": 0,
+  "baseInventoryDeliveryItem": 0,
+  "baseReturnedInvoiceItem": 0,
+  "quotationItemRef": 0,
+  "itemRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryDeliveryID	integer(int32)¦null	false	none		none
+isReturn	boolean¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+receiverDLRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+destinationStockRef	integer(int32)¦null	false	none		none
+baseInvoiceItem	integer(int32)¦null	false	none		none
+baseInventoryDeliveryItem	integer(int32)¦null	false	none		none
+baseReturnedInvoiceItem	integer(int32)¦null	false	none		none
+quotationItemRef	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "inventoryPurchaseInvoice": {
+    "inventoryPurchaseInvoiceID": 0,
+    "vendorDLRef": 0,
+    "number": 0,
+    "invoiceNumber": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "currencyRate": 0,
+    "totalPrice": 0,
+    "totalPriceInBaseCurrency": 0,
+    "totalTax": 0,
+    "totalDuty": 0,
+    "totalTransportPrice": 0,
+    "totalNetPrice": 0,
+    "totalNetPriceInBaseCurrency": 0,
+    "paymentHeaderRef": 0,
+    "type": 0,
+    "partyAddressRef": 0,
+    "description": "string",
+    "inventoryPurchaseInvoiceItem": [
+      {
+        "rowNumber": 0,
+        "itemRef": 0,
+        "quantity": 0,
+        "secondaryQuantity": 0,
+        "remainingQuantity": 0,
+        "remainingSecondaryQuantity": 0,
+        "currencyRate": 0,
+        "fee": 0,
+        "feeInBaseCurrency": 0,
+        "price": 0,
+        "priceInBaseCurrency": 0,
+        "discount": 0,
+        "discountInBaseCurrentcy": 0,
+        "addition": 0,
+        "additionInBaseCurrency": 0,
+        "tax": 0,
+        "taxInBaseCurrency": 0,
+        "duty": 0,
+        "dutyInBaseCurrency": 0,
+        "transportPrice": 0,
+        "transportTax": 0,
+        "transportDuty": 0,
+        "transportDescription": "string",
+        "netPriceInBaseCurrency": 0,
+        "description": "string"
+      }
+    ]
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryPurchaseInvoice	DataModelsCreateInventoryPurchaseInvoice	false	none		none
+   
+{
+  "inventoryPurchaseInvoiceID": 0,
+  "vendorDLRef": 0,
+  "number": 0,
+  "invoiceNumber": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "currencyRate": 0,
+  "totalPrice": 0,
+  "totalPriceInBaseCurrency": 0,
+  "totalTax": 0,
+  "totalDuty": 0,
+  "totalTransportPrice": 0,
+  "totalNetPrice": 0,
+  "totalNetPriceInBaseCurrency": 0,
+  "paymentHeaderRef": 0,
+  "type": 0,
+  "partyAddressRef": 0,
+  "description": "string",
+  "inventoryPurchaseInvoiceItem": [
+    {
+      "rowNumber": 0,
+      "itemRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "remainingQuantity": 0,
+      "remainingSecondaryQuantity": 0,
+      "currencyRate": 0,
+      "fee": 0,
+      "feeInBaseCurrency": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrentcy": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "taxInBaseCurrency": 0,
+      "duty": 0,
+      "dutyInBaseCurrency": 0,
+      "transportPrice": 0,
+      "transportTax": 0,
+      "transportDuty": 0,
+      "transportDescription": "string",
+      "netPriceInBaseCurrency": 0,
+      "description": "string"
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryPurchaseInvoiceID	integer(int32)¦null	false	none		none
+vendorDLRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+invoiceNumber	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+currencyRate	number(decimal)¦null	false	none		none
+totalPrice	number(decimal)¦null	false	none		none
+totalPriceInBaseCurrency	number(decimal)¦null	false	none		none
+totalTax	number(decimal)¦null	false	none		none
+totalDuty	number(decimal)¦null	false	none		none
+totalTransportPrice	number(decimal)¦null	false	none		none
+totalNetPrice	number(decimal)¦null	false	none		none
+totalNetPriceInBaseCurrency	number(decimal)¦null	false	none		none
+paymentHeaderRef	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+partyAddressRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+inventoryPurchaseInvoiceItem	[DataModelsCreateInventoryPurchaseInvoiceItem]¦null	false	none		none
+   
+{
+  "rowNumber": 0,
+  "itemRef": 0,
+  "quantity": 0,
+  "secondaryQuantity": 0,
+  "remainingQuantity": 0,
+  "remainingSecondaryQuantity": 0,
+  "currencyRate": 0,
+  "fee": 0,
+  "feeInBaseCurrency": 0,
+  "price": 0,
+  "priceInBaseCurrency": 0,
+  "discount": 0,
+  "discountInBaseCurrentcy": 0,
+  "addition": 0,
+  "additionInBaseCurrency": 0,
+  "tax": 0,
+  "taxInBaseCurrency": 0,
+  "duty": 0,
+  "dutyInBaseCurrency": 0,
+  "transportPrice": 0,
+  "transportTax": 0,
+  "transportDuty": 0,
+  "transportDescription": "string",
+  "netPriceInBaseCurrency": 0,
+  "description": "string"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+rowNumber	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+quantity	number(decimal)¦null	false	none		none
+secondaryQuantity	number(decimal)¦null	false	none		none
+remainingQuantity	number(decimal)¦null	false	none		none
+remainingSecondaryQuantity	number(decimal)¦null	false	none		none
+currencyRate	number(decimal)¦null	false	none		none
+fee	number(decimal)¦null	false	none		none
+feeInBaseCurrency	number(decimal)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discount	number(decimal)¦null	false	none		none
+discountInBaseCurrentcy	number(decimal)¦null	false	none		none
+addition	number(decimal)¦null	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+tax	number(decimal)¦null	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+duty	number(decimal)¦null	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+transportPrice	number(decimal)¦null	false	none		none
+transportTax	number(decimal)¦null	false	none		none
+transportDuty	number(decimal)¦null	false	none		none
+transportDescription	string¦null	false	none		none
+netPriceInBaseCurrency	number(decimal)¦null	false	none		none
+description	string¦null	false	none		none
+   
+{
+  "purchaseInvoice": {
+    "inventoryPurchaseInvoiceID": 0,
+    "number": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+purchaseInvoice	DataModelsDeleteInventoryPurchaseInvoice	false	none		none
+   
+{
+  "inventoryPurchaseInvoiceID": 0,
+  "number": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryPurchaseInvoiceID	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+   
+{
+  "inventoryPurchaseInvoiceID": 0,
+  "vendorDLRef": 0,
+  "number": 0,
+  "invoiceNumber": 0,
+  "type": 1,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryPurchaseInvoiceID	integer(int32)¦null	false	none		none
+vendorDLRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+invoiceNumber	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "receipt": {
+    "inventoryReceiptID": 0,
+    "isReturn": true,
+    "type": 0,
+    "purchaseType": 0,
+    "stockRef": 0,
+    "delivererDLRef": 0,
+    "slAccountRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "accountingVoucherRef": 0,
+    "paymentHeaderRef": 0,
+    "transportBrokerSLAccountRef": 0,
+    "transporterDLRef": 0,
+    "totalPrice": 0,
+    "totalTax": 0,
+    "totalDuty": 0,
+    "totalTransportPrice": 0,
+    "totalNetPrice": 0,
+    "basePurchaseInvoiceRef": 0,
+    "baseInventoryDeliveryRef": 0,
+    "baseImportPurchaseInvoiceRef": 0,
+    "description": "string",
+    "totalReturnedPrice": 0,
+    "totalReturnedNetPrice": 0,
+    "totalOtherCost": 0,
+    "isWastage": true,
+    "inventoryReceiptItem": [
+      {
+        "isReturn": true,
+        "rowNumber": 0,
+        "base": 0,
+        "returnBase": 0,
+        "itemRef": 0,
+        "tracingRef": 0,
+        "quantity": 0,
+        "secondaryQuantity": 0,
+        "remainingQuantity": 0,
+        "remainingSecondaryQuantity": 0,
+        "currencyRef": 0,
+        "currencyRate": 0,
+        "currencyValue": 0,
+        "price": 0,
+        "tax": 0,
+        "taxCurrencyValue": 0,
+        "duty": 0,
+        "dutyCurrencyValue": 0,
+        "transportPrice": 0,
+        "transportTax": 0,
+        "transportDuty": 0,
+        "transportDescription": "string",
+        "description": "string",
+        "basePurchaseInvoiceItemRef": 0,
+        "baseImportPurchaseInvoiceItemRef": 0,
+        "fee": 0,
+        "returnedFee": 0,
+        "returnedNetPrice": 0
+      }
+    ]
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receipt	DataModelsCreateInventoryReceipt	false	none		none
+   
+{
+  "inventoryReceiptID": 0,
+  "isReturn": true,
+  "type": 0,
+  "purchaseType": 0,
+  "stockRef": 0,
+  "delivererDLRef": 0,
+  "slAccountRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "accountingVoucherRef": 0,
+  "paymentHeaderRef": 0,
+  "transportBrokerSLAccountRef": 0,
+  "transporterDLRef": 0,
+  "totalPrice": 0,
+  "totalTax": 0,
+  "totalDuty": 0,
+  "totalTransportPrice": 0,
+  "totalNetPrice": 0,
+  "basePurchaseInvoiceRef": 0,
+  "baseInventoryDeliveryRef": 0,
+  "baseImportPurchaseInvoiceRef": 0,
+  "description": "string",
+  "totalReturnedPrice": 0,
+  "totalReturnedNetPrice": 0,
+  "totalOtherCost": 0,
+  "isWastage": true,
+  "inventoryReceiptItem": [
+    {
+      "isReturn": true,
+      "rowNumber": 0,
+      "base": 0,
+      "returnBase": 0,
+      "itemRef": 0,
+      "tracingRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "remainingQuantity": 0,
+      "remainingSecondaryQuantity": 0,
+      "currencyRef": 0,
+      "currencyRate": 0,
+      "currencyValue": 0,
+      "price": 0,
+      "tax": 0,
+      "taxCurrencyValue": 0,
+      "duty": 0,
+      "dutyCurrencyValue": 0,
+      "transportPrice": 0,
+      "transportTax": 0,
+      "transportDuty": 0,
+      "transportDescription": "string",
+      "description": "string",
+      "basePurchaseInvoiceItemRef": 0,
+      "baseImportPurchaseInvoiceItemRef": 0,
+      "fee": 0,
+      "returnedFee": 0,
+      "returnedNetPrice": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryReceiptID	integer(int32)¦null	false	none		none
+isReturn	boolean¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+purchaseType	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+delivererDLRef	integer(int32)¦null	false	none		none
+slAccountRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+accountingVoucherRef	integer(int32)¦null	false	none		none
+paymentHeaderRef	integer(int32)¦null	false	none		none
+transportBrokerSLAccountRef	integer(int32)¦null	false	none		none
+transporterDLRef	integer(int32)¦null	false	none		none
+totalPrice	number(decimal)¦null	false	none		none
+totalTax	number(decimal)¦null	false	none		none
+totalDuty	number(decimal)¦null	false	none		none
+totalTransportPrice	number(decimal)¦null	false	none		none
+totalNetPrice	number(decimal)¦null	false	none		none
+basePurchaseInvoiceRef	integer(int32)¦null	false	none		none
+baseInventoryDeliveryRef	integer(int32)¦null	false	none		none
+baseImportPurchaseInvoiceRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+totalReturnedPrice	number(decimal)¦null	false	none		none
+totalReturnedNetPrice	number(decimal)¦null	false	none		none
+totalOtherCost	number(decimal)¦null	false	none		none
+isWastage	boolean¦null	false	none		none
+inventoryReceiptItem	[DataModelsCreateInventoryReceiptItem]¦null	false	none		none
+   
+{
+  "isReturn": true,
+  "rowNumber": 0,
+  "base": 0,
+  "returnBase": 0,
+  "itemRef": 0,
+  "tracingRef": 0,
+  "quantity": 0,
+  "secondaryQuantity": 0,
+  "remainingQuantity": 0,
+  "remainingSecondaryQuantity": 0,
+  "currencyRef": 0,
+  "currencyRate": 0,
+  "currencyValue": 0,
+  "price": 0,
+  "tax": 0,
+  "taxCurrencyValue": 0,
+  "duty": 0,
+  "dutyCurrencyValue": 0,
+  "transportPrice": 0,
+  "transportTax": 0,
+  "transportDuty": 0,
+  "transportDescription": "string",
+  "description": "string",
+  "basePurchaseInvoiceItemRef": 0,
+  "baseImportPurchaseInvoiceItemRef": 0,
+  "fee": 0,
+  "returnedFee": 0,
+  "returnedNetPrice": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+isReturn	boolean¦null	false	none		none
+rowNumber	integer(int32)¦null	false	none		none
+base	integer(int32)¦null	false	none		none
+returnBase	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+quantity	number(decimal)¦null	false	none		none
+secondaryQuantity	number(decimal)¦null	false	none		none
+remainingQuantity	number(decimal)¦null	false	none		none
+remainingSecondaryQuantity	number(decimal)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+currencyRate	number(decimal)¦null	false	none		none
+currencyValue	number(decimal)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+tax	number(decimal)¦null	false	none		none
+taxCurrencyValue	number(decimal)¦null	false	none		none
+duty	number(decimal)¦null	false	none		none
+dutyCurrencyValue	number(decimal)¦null	false	none		none
+transportPrice	number(decimal)¦null	false	none		none
+transportTax	number(decimal)¦null	false	none		none
+transportDuty	number(decimal)¦null	false	none		none
+transportDescription	string¦null	false	none		none
+description	string¦null	false	none		none
+basePurchaseInvoiceItemRef	integer(int32)¦null	false	none		none
+baseImportPurchaseInvoiceItemRef	integer(int32)¦null	false	none		none
+fee	number(decimal)¦null	false	none		none
+returnedFee	number(decimal)¦null	false	none		none
+returnedNetPrice	number(decimal)¦null	false	none		none
+   
+{
+  "receipt": {
+    "inventoryReceiptID": 0,
+    "number": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receipt	DataModelsDeleteInventoryReceipt	false	none		none
+   
+{
+  "inventoryReceiptID": 0,
+  "number": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryReceiptID	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+   
+{
+  "inventoryReceiptID": 0,
+  "isReturn": false,
+  "type": 1,
+  "stockRef": 0,
+  "delivererDLRef": 0,
+  "number": 0,
+  "itemRef": 0,
+  "tracingRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+inventoryReceiptID	integer(int32)¦null	false	none		none
+isReturn	boolean¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+delivererDLRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "item": {
+    "itemID": 0,
+    "type": 1,
+    "code": "",
+    "title": "",
+    "barCode": "",
+    "unitRef": 0,
+    "secondaryUnitRef": 0,
+    "unitsRatio": 0,
+    "sellable": true,
+    "defaultStockRef": 0,
+    "purchaseGroupRef": 0,
+    "saleGroupRef": 0,
+    "isActive": true
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+item	DataModelsCreateItem	false	none		none
+   
+{
+  "itemID": 0,
+  "type": 1,
+  "code": "",
+  "title": "",
+  "barCode": "",
+  "unitRef": 0,
+  "secondaryUnitRef": 0,
+  "unitsRatio": 0,
+  "sellable": true,
+  "defaultStockRef": 0,
+  "purchaseGroupRef": 0,
+  "saleGroupRef": 0,
+  "isActive": true
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+itemID	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+code	string¦null	false	none		none
+title	string¦null	false	none		none
+barCode	string¦null	false	none		none
+unitRef	integer(int32)¦null	false	none		none
+secondaryUnitRef	integer(int32)¦null	false	none		none
+unitsRatio	number(float)¦null	false	none		none
+sellable	boolean¦null	false	none		none
+defaultStockRef	integer(int32)¦null	false	none		none
+purchaseGroupRef	integer(int32)¦null	false	none		none
+saleGroupRef	integer(int32)¦null	false	none		none
+isActive	boolean¦null	false	none		none
+   
+{
+  "item": {
+    "itemID": 0,
+    "code": ""
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+item	DataModelsDeleteItem	false	none		none
+   
+{
+  "itemID": 0,
+  "code": ""
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+itemID	integer(int32)¦null	false	none		none
+code	string¦null	false	none		none
+   
+{
+  "itemID": 0,
+  "type": 1,
+  "code": "",
+  "title": "",
+  "barCode": "",
+  "unitRef": 0,
+  "sellable": true,
+  "stockRef": 0,
+  "purchaseGroupRef": 0,
+  "saleGroupRef": 0,
+  "saleTypeRef": 0,
+  "isActive": true,
+  "query": "ItemStockPrice",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+itemID	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+code	string¦null	false	none		none
+title	string¦null	false	none		none
+barCode	string¦null	false	none		none
+unitRef	integer(int32)¦null	false	none		none
+sellable	boolean¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+purchaseGroupRef	integer(int32)¦null	false	none		none
+saleGroupRef	integer(int32)¦null	false	none		none
+saleTypeRef	integer(int32)¦null	false	none		none
+isActive	boolean¦null	false	none		none
+query	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "itemRef": 0,
+  "stockRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+itemRef	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "stockRef": 0,
+  "itemRef": 0,
+  "tracingRef": 0,
+  "unitRef": 0,
+  "fiscalYearRef": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+stockRef	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+unitRef	integer(int32)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "stock": {
+    "stockID": 0,
+    "code": "",
+    "title": ""
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+stock	DataModelsCreateStock	false	none		none
+   
+{
+  "stockID": 0,
+  "code": "",
+  "title": ""
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+stockID	integer(int32)¦null	false	none		none
+code	string¦null	false	none		none
+title	string¦null	false	none		none
+   
+{
+  "stock": {
+    "stockID": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+stock	DataModelsDeleteStock	false	none		none
+   
+{
+  "stockID": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+stockID	integer(int32)¦null	false	none		none
+   
+{
+  "stockID": 0,
+  "code": "",
+  "title": "",
+  "isActive": true,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+stockID	integer(int32)¦null	false	none		none
+code	string¦null	false	none		none
+title	string¦null	false	none		none
+isActive	boolean¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "unit": {
+    "unitID": 0,
+    "title": ""
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+unit	DataModelsCreateUnit	false	none		none
+   
+{
+  "unitID": 0,
+  "title": ""
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+unitID	integer(int32)¦null	false	none		none
+title	string¦null	false	none		none
+   
+{
+  "unit": {
+    "unitID": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+unit	DataModelsDeleteUnit	false	none		none
+   
+{
+  "unitID": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+unitID	integer(int32)¦null	false	none		none
+   
+{
+  "unitID": 0,
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+unitID	integer(int32)¦null	false	none		none
+title	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "bankAccountId": 0,
+  "bankBranchRef": 0,
+  "accountNo": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+bankAccountId	integer(int32)¦null	false	none		none
+bankBranchRef	integer(int32)¦null	false	none		none
+accountNo	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "bankBranchId": 0,
+  "bankRef": 0,
+  "code": "",
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+bankBranchId	integer(int32)¦null	false	none		none
+bankRef	integer(int32)¦null	false	none		none
+code	string¦null	false	none		none
+title	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "bankId": 0,
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+bankId	integer(int32)¦null	false	none		none
+title	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "cashId": 0,
+  "title": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+cashId	integer(int32)¦null	false	none		none
+title	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "payment": {
+    "paymentHeaderId": 0,
+    "type": 0,
+    "accountSlRef": 0,
+    "dlRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "discount": 0,
+    "totalAmount": 0,
+    "itemType": 0,
+    "state": 0,
+    "creatorForm": "string",
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "version": 0,
+    "rate": 0,
+    "cashRef": 0,
+    "amount": 0,
+    "amountInBaseCurrency": 0,
+    "receiptHeaderRef": 0,
+    "fiscalYearRef": 0,
+    "voucherRef": 0,
+    "discountRate": 0,
+    "discountInBaseCurrency": 0,
+    "bankFeeSlRef": 0,
+    "totalAmountInBaseCurrency": 0
+  },
+  "paymentCheques": [
+    {
+      "paymentChequeId": 0,
+      "number": "string",
+      "secondNumber": "string",
+      "isGuarantee": true,
+      "amount": 0,
+      "date": "2019-08-24T14:15:22Z",
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "state": 0,
+      "paymentHeaderRef": 0,
+      "bankAccountRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "durationType": 0,
+      "dlRef": 0,
+      "type": 0,
+      "sayadCode": "string"
+    }
+  ],
+  "paymentDrafts": [
+    {
+      "paymentDraftId": 0,
+      "number": "string",
+      "date": "2019-08-24T14:15:22Z",
+      "amount": 0,
+      "bankAccountRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "paymentHeaderRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "bankFeeAmount": 0,
+      "bankFeeAmountInBaseCurrency": 0,
+      "bankFeeAmountRate": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+payment	DataModelsCreatePaymentHeader	false	none		none
+paymentCheques	[DataModelsCreatePaymentCheque]
+false	none		none
+paymentDrafts	[DataModelsCreatePaymentDraft]
+false	none		none
+   
+{
+  "paymentHeaderId": 0,
+  "type": 0,
+  "accountSlRef": 0,
+  "dlRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "description": "string",
+  "description_En": "string",
+  "discount": 0,
+  "totalAmount": 0,
+  "itemType": 0,
+  "state": 0,
+  "creatorForm": "string",
+  "creator": 0,
+  "creationDate": "2019-08-24T14:15:22Z",
+  "lastModifier": 0,
+  "lastModificationDate": "2019-08-24T14:15:22Z",
+  "version": 0,
+  "rate": 0,
+  "cashRef": 0,
+  "amount": 0,
+  "amountInBaseCurrency": 0,
+  "receiptHeaderRef": 0,
+  "fiscalYearRef": 0,
+  "voucherRef": 0,
+  "discountRate": 0,
+  "discountInBaseCurrency": 0,
+  "bankFeeSlRef": 0,
+  "totalAmountInBaseCurrency": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+paymentHeaderId	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+accountSlRef	integer(int32)¦null	false	none		none
+dlRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+description_En	string¦null	false	none		none
+discount	number(decimal)¦null	false	none		none
+totalAmount	number(decimal)¦null	false	none		none
+itemType	integer(int32)¦null	false	none		none
+state	integer(int32)¦null	false	none		none
+creatorForm	string¦null	false	none		none
+creator	integer(int32)¦null	false	none		none
+creationDate	string(date-time)¦null	false	none		none
+lastModifier	integer(int32)¦null	false	none		none
+lastModificationDate	string(date-time)¦null	false	none		none
+version	integer(int32)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+cashRef	integer(int32)¦null	false	none		none
+amount	number(decimal)¦null	false	none		none
+amountInBaseCurrency	number(decimal)¦null	false	none		none
+receiptHeaderRef	integer(int32)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+voucherRef	integer(int32)¦null	false	none		none
+discountRate	number(decimal)¦null	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+bankFeeSlRef	integer(int32)¦null	false	none		none
+totalAmountInBaseCurrency	number(decimal)¦null	false	none		none
+   
+{
+  "paymentChequeId": 0,
+  "number": "string",
+  "secondNumber": "string",
+  "isGuarantee": true,
+  "amount": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "description": "string",
+  "description_En": "string",
+  "version": 0,
+  "state": 0,
+  "paymentHeaderRef": 0,
+  "bankAccountRef": 0,
+  "headerNumber": 0,
+  "headerDate": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "rate": 0,
+  "amountInBaseCurrency": 0,
+  "durationType": 0,
+  "dlRef": 0,
+  "type": 0,
+  "sayadCode": "string"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+paymentChequeId	integer(int32)¦null	false	none		none
+number	string¦null	false	none		none
+secondNumber	string¦null	false	none		none
+isGuarantee	boolean¦null	false	none		none
+amount	number(decimal)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+description	string¦null	false	none		none
+description_En	string¦null	false	none		none
+version	integer(int32)¦null	false	none		none
+state	integer(int32)¦null	false	none		none
+paymentHeaderRef	integer(int32)¦null	false	none		none
+bankAccountRef	integer(int32)¦null	false	none		none
+headerNumber	integer(int32)¦null	false	none		none
+headerDate	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+amountInBaseCurrency	number(decimal)¦null	false	none		none
+durationType	integer(int32)¦null	false	none		none
+dlRef	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+sayadCode	string¦null	false	none		none
+   
+{
+  "paymentDraftId": 0,
+  "number": "string",
+  "date": "2019-08-24T14:15:22Z",
+  "amount": 0,
+  "bankAccountRef": 0,
+  "description": "string",
+  "description_En": "string",
+  "version": 0,
+  "paymentHeaderRef": 0,
+  "headerNumber": 0,
+  "headerDate": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "rate": 0,
+  "amountInBaseCurrency": 0,
+  "bankFeeAmount": 0,
+  "bankFeeAmountInBaseCurrency": 0,
+  "bankFeeAmountRate": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+paymentDraftId	integer(int32)¦null	false	none		none
+number	string¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+amount	number(decimal)¦null	false	none		none
+bankAccountRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+description_En	string¦null	false	none		none
+version	integer(int32)¦null	false	none		none
+paymentHeaderRef	integer(int32)¦null	false	none		none
+headerNumber	integer(int32)¦null	false	none		none
+headerDate	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+amountInBaseCurrency	number(decimal)¦null	false	none		none
+bankFeeAmount	number(decimal)¦null	false	none		none
+bankFeeAmountInBaseCurrency	number(decimal)¦null	false	none		none
+bankFeeAmountRate	number(decimal)¦null	false	none		none
+   
+{
+  "payment": {
+    "paymentHeaderId": 0,
+    "number": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+payment	DataModelsDeletePaymentHeader	false	none		none
+   
+{
+  "paymentHeaderId": 0,
+  "number": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+paymentHeaderId	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+   
+{
+  "paymentHeaderId": 0,
+  "number": 0,
+  "dlRef": 0,
+  "currencyRef": 0,
+  "fiscalYearRef": 0,
+  "type": 0,
+  "state": 0,
+  "itemType": 0,
+  "cashRef": 0,
+  "accountSlRef": 0,
+  "voucherRef": 0,
+  "receiptHeaderRef": 0,
+  "creatorForm": "string",
+  "search": "string",
+  "fromDate": "2019-08-24T14:15:22Z",
+  "toDate": "2019-08-24T14:15:22Z",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+paymentHeaderId	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+dlRef	integer(int32)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+state	integer(int32)¦null	false	none		none
+itemType	integer(int32)¦null	false	none		none
+cashRef	integer(int32)¦null	false	none		none
+accountSlRef	integer(int32)¦null	false	none		none
+voucherRef	integer(int32)¦null	false	none		none
+receiptHeaderRef	integer(int32)¦null	false	none		none
+creatorForm	string¦null	false	none		none
+search	string¦null	false	none		none
+fromDate	string(date-time)¦null	false	none		none
+toDate	string(date-time)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "posId": 0,
+  "bankAccountRef": 0,
+  "terminalNo": "",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 10,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+posId	integer(int32)¦null	false	none		none
+bankAccountRef	integer(int32)¦null	false	none		none
+terminalNo	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "receiptHeader": {
+    "receiptHeaderId": 0,
+    "type": 0,
+    "accountSlRef": 0,
+    "dlRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "description": "string",
+    "description_En": "string",
+    "discount": 0,
+    "totalAmount": 0,
+    "itemType": 0,
+    "state": 0,
+    "creatorForm": "string",
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "version": 0,
+    "rate": 0,
+    "cashRef": 0,
+    "amount": 0,
+    "amountInBaseCurrency": 0,
+    "fiscalYearRef": 0,
+    "voucherRef": 0,
+    "discountRate": 0,
+    "discountInBaseCurrency": 0,
+    "guid": "string",
+    "totalAmountInBaseCurrency": 0
+  },
+  "receiptCheques": [
+    {
+      "receiptChequeId": 0,
+      "number": "string",
+      "secondNumber": "string",
+      "isGuarantee": true,
+      "accountNo": "string",
+      "amount": 0,
+      "date": "2019-08-24T14:15:22Z",
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "state": 0,
+      "cashRef": 0,
+      "receiptHeaderRef": 0,
+      "bankRef": 0,
+      "branchCode": "string",
+      "branchTitle": "string",
+      "locationRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "bankBranchRef": 0,
+      "dlRef": 0,
+      "type": 0,
+      "initState": 0,
+      "sayadCode": "string",
+      "chequeOwner": "string"
+    }
+  ],
+  "receiptDrafts": [
+    {
+      "receiptDraftId": 0,
+      "number": "string",
+      "date": "2019-08-24T14:15:22Z",
+      "amount": 0,
+      "bankAccountRef": 0,
+      "description": "string",
+      "description_En": "string",
+      "version": 0,
+      "receiptHeaderRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0
+    }
+  ],
+  "receiptPoses": [
+    {
+      "receiptPosId": 0,
+      "posRef": 0,
+      "amount": 0,
+      "state": 0,
+      "version": 0,
+      "receiptHeaderRef": 0,
+      "headerNumber": 0,
+      "headerDate": "2019-08-24T14:15:22Z",
+      "currencyRef": 0,
+      "rate": 0,
+      "amountInBaseCurrency": 0,
+      "trackingCode": "string"
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptHeader	DataModelsCreateReceiptHeader	false	none		none
+receiptCheques	[DataModelsCreateReceiptCheque]¦null	false	none		none
+receiptDrafts	[DataModelsCreateReceiptDraft]¦null	false	none		none
+receiptPoses	[DataModelsCreateReceiptPos]¦null	false	none		none
+   
+{
+  "receiptHeaderId": 0,
+  "type": 0,
+  "accountSlRef": 0,
+  "dlRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "description": "string",
+  "description_En": "string",
+  "discount": 0,
+  "totalAmount": 0,
+  "itemType": 0,
+  "state": 0,
+  "creatorForm": "string",
+  "creator": 0,
+  "creationDate": "2019-08-24T14:15:22Z",
+  "lastModifier": 0,
+  "lastModificationDate": "2019-08-24T14:15:22Z",
+  "version": 0,
+  "rate": 0,
+  "cashRef": 0,
+  "amount": 0,
+  "amountInBaseCurrency": 0,
+  "fiscalYearRef": 0,
+  "voucherRef": 0,
+  "discountRate": 0,
+  "discountInBaseCurrency": 0,
+  "guid": "string",
+  "totalAmountInBaseCurrency": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptHeaderId	integer(int32)¦null	false	none		none
+type	integer(int32)	false	none		none
+accountSlRef	integer(int32)¦null	false	none		none
+dlRef	integer(int32)	false	none		none
+number	integer(int32)	false	none		none
+date	string(date-time)	false	none		none
+currencyRef	integer(int32)	false	none		none
+description	string	false	none		none
+description_En	string¦null	false	none		none
+discount	number(decimal)	false	none		none
+totalAmount	number(decimal)	false	none		none
+itemType	integer(int32)	false	none		none
+state	integer(int32)	false	none		none
+creatorForm	string	false	none		none
+creator	integer(int32)¦null	false	none		none
+creationDate	string(date-time)¦null	false	none		none
+lastModifier	integer(int32)¦null	false	none		none
+lastModificationDate	string(date-time)¦null	false	none		none
+version	integer(int32)	false	none		none
+rate	number(decimal)	false	none		none
+cashRef	integer(int32)¦null	false	none		none
+amount	number(decimal)¦null	false	none		none
+amountInBaseCurrency	number(decimal)	false	none		none
+fiscalYearRef	integer(int32)	false	none		none
+voucherRef	integer(int32)¦null	false	none		none
+discountRate	number(decimal)¦null	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+guid	string¦null	false	none		none
+totalAmountInBaseCurrency	number(decimal)¦null	false	none		none
+   
+{
+  "receiptChequeId": 0,
+  "number": "string",
+  "secondNumber": "string",
+  "isGuarantee": true,
+  "accountNo": "string",
+  "amount": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "description": "string",
+  "description_En": "string",
+  "version": 0,
+  "state": 0,
+  "cashRef": 0,
+  "receiptHeaderRef": 0,
+  "bankRef": 0,
+  "branchCode": "string",
+  "branchTitle": "string",
+  "locationRef": 0,
+  "headerNumber": 0,
+  "headerDate": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "rate": 0,
+  "amountInBaseCurrency": 0,
+  "bankBranchRef": 0,
+  "dlRef": 0,
+  "type": 0,
+  "initState": 0,
+  "sayadCode": "string",
+  "chequeOwner": "string"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptChequeId	integer(int32)¦null	false	none		none
+number	string	false	none		none
+secondNumber	string¦null	false	none		none
+isGuarantee	boolean	false	none		none
+accountNo	string	false	none		none
+amount	number(decimal)	false	none		none
+date	string(date-time)¦null	false	none		none
+description	string¦null	false	none		none
+description_En	string¦null	false	none		none
+version	integer(int32)	false	none		none
+state	integer(int32)	false	none		none
+cashRef	integer(int32)¦null	false	none		none
+receiptHeaderRef	integer(int32)¦null	false	none		none
+bankRef	integer(int32)¦null	false	none		none
+branchCode	string¦null	false	none		none
+branchTitle	string¦null	false	none		none
+locationRef	integer(int32)¦null	false	none		none
+headerNumber	integer(int32)	false	none		none
+headerDate	string(date-time)	false	none		none
+currencyRef	integer(int32)	false	none		none
+rate	number(decimal)	false	none		none
+amountInBaseCurrency	number(decimal)	false	none		none
+bankBranchRef	integer(int32)¦null	false	none		none
+dlRef	integer(int32)	false	none		none
+type	integer(int32)	false	none		none
+initState	integer(int32)¦null	false	none		none
+sayadCode	string¦null	false	none		none
+chequeOwner	string¦null	false	none		none
+   
+{
+  "receiptDraftId": 0,
+  "number": "string",
+  "date": "2019-08-24T14:15:22Z",
+  "amount": 0,
+  "bankAccountRef": 0,
+  "description": "string",
+  "description_En": "string",
+  "version": 0,
+  "receiptHeaderRef": 0,
+  "headerNumber": 0,
+  "headerDate": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "rate": 0,
+  "amountInBaseCurrency": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptDraftId	integer(int32)¦null	false	none		none
+number	string¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+amount	number(decimal)¦null	false	none		none
+bankAccountRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+description_En	string¦null	false	none		none
+version	integer(int32)	false	none		none
+receiptHeaderRef	integer(int32)¦null	false	none		none
+headerNumber	integer(int32)	false	none		none
+headerDate	string(date-time)	false	none		none
+currencyRef	integer(int32)	false	none		none
+rate	number(decimal)	false	none		none
+amountInBaseCurrency	number(decimal)	false	none		none
+   
+{
+  "receiptPosId": 0,
+  "posRef": 0,
+  "amount": 0,
+  "state": 0,
+  "version": 0,
+  "receiptHeaderRef": 0,
+  "headerNumber": 0,
+  "headerDate": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "rate": 0,
+  "amountInBaseCurrency": 0,
+  "trackingCode": "string"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptPosId	integer(int32)¦null	false	none		none
+posRef	integer(int32)	false	none		none
+amount	number(decimal)	false	none		none
+state	integer(int32)	false	none		none
+version	integer(int32)	false	none		none
+receiptHeaderRef	integer(int32)¦null	false	none		none
+headerNumber	integer(int32)	false	none		none
+headerDate	string(date-time)	false	none		none
+currencyRef	integer(int32)	false	none		none
+rate	number(decimal)	false	none		none
+amountInBaseCurrency	number(decimal)	false	none		none
+trackingCode	string¦null	false	none		none
+   
+{
+  "receiptHeader": {
+    "receiptHeaderId": 0,
+    "number": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptHeader	DataModelsDeleteReceiptHeader	false	none		none
+   
+{
+  "receiptHeaderId": 0,
+  "number": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptHeaderId	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+   
+{
+  "receiptHeaderId": 0,
+  "number": 0,
+  "dlRef": 0,
+  "type": 0,
+  "state": 0,
+  "currencyRef": 0,
+  "fiscalYearRef": 0,
+  "dateFrom": "2019-08-24T14:15:22Z",
+  "dateTo": "2019-08-24T14:15:22Z",
+  "description": "string",
+  "creatorForm": "string",
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+receiptHeaderId	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+dlRef	integer(int32)¦null	false	none		none
+type	integer(int32)¦null	false	none		none
+state	integer(int32)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+dateFrom	string(date-time)¦null	false	none		none
+dateTo	string(date-time)¦null	false	none		none
+description	string¦null	false	none		none
+creatorForm	string¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "invoice": {
+    "invoiceID": 0,
+    "quotationRef": 0,
+    "customerPartyRef": 0,
+    "customerRealName": "string",
+    "customerPartyPhone": "string",
+    "customerPartyIdentificationCode": "string",
+    "customerPartyCode": "string",
+    "saleTypeRef": 0,
+    "partyAddressRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "price": 0,
+    "priceInBaseCurrency": 0,
+    "discount": 0,
+    "discountInBaseCurrency": 0,
+    "dutyInBaseCurrency": 0,
+    "duty": 0,
+    "addition": 0,
+    "additionInBaseCurrency": 0,
+    "tax": 0,
+    "taxInBaseCurrency": 0,
+    "rate": 0,
+    "creator": 0,
+    "fiscalYearRef": 0,
+    "slRef": 0,
+    "description": "string",
+    "netPrice": 0
+  },
+  "invoiceItems": [
+    {
+      "rowID": 0,
+      "itemRef": 0,
+      "itemCode": "string",
+      "tracingRef": 0,
+      "stockRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "fee": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrency": 0,
+      "customerDiscount": 0,
+      "customerDiscountRate": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "duty": 0,
+      "taxInBaseCurrency": 0,
+      "dutyInBaseCurrency": 0,
+      "rate": 0,
+      "quotationItemRef": 0,
+      "description": "string",
+      "netPrice": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+invoice	DataModelsCreateInvoice	false	none		none
+invoiceItems	[DataModelsCreateInvoiceItem]
+false	none		none
+   
+{
+  "invoiceID": 0,
+  "quotationRef": 0,
+  "customerPartyRef": 0,
+  "customerRealName": "string",
+  "customerPartyPhone": "string",
+  "customerPartyIdentificationCode": "string",
+  "customerPartyCode": "string",
+  "saleTypeRef": 0,
+  "partyAddressRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "price": 0,
+  "priceInBaseCurrency": 0,
+  "discount": 0,
+  "discountInBaseCurrency": 0,
+  "dutyInBaseCurrency": 0,
+  "duty": 0,
+  "addition": 0,
+  "additionInBaseCurrency": 0,
+  "tax": 0,
+  "taxInBaseCurrency": 0,
+  "rate": 0,
+  "creator": 0,
+  "fiscalYearRef": 0,
+  "slRef": 0,
+  "description": "string",
+  "netPrice": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+invoiceID	integer(int32)¦null	false	none		none
+quotationRef	integer(int32)¦null	false	none		none
+customerPartyRef	integer(int32)¦null	false	none		none
+customerRealName	string¦null	false	none		none
+customerPartyPhone	string¦null	false	none		none
+customerPartyIdentificationCode	string¦null	false	none		none
+customerPartyCode	string¦null	false	none		none
+saleTypeRef	integer(int32)¦null	false	none		none
+partyAddressRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discount	number(decimal)¦null	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+duty	number(decimal)¦null	false	none		none
+addition	number(decimal)¦null	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+tax	number(decimal)¦null	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+creator	integer(int32)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+slRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+netPrice	number(decimal)¦null	false	none		none
+   
+{
+  "rowID": 0,
+  "itemRef": 0,
+  "itemCode": "string",
+  "tracingRef": 0,
+  "stockRef": 0,
+  "quantity": 0,
+  "secondaryQuantity": 0,
+  "fee": 0,
+  "price": 0,
+  "priceInBaseCurrency": 0,
+  "discount": 0,
+  "discountInBaseCurrency": 0,
+  "customerDiscount": 0,
+  "customerDiscountRate": 0,
+  "addition": 0,
+  "additionInBaseCurrency": 0,
+  "tax": 0,
+  "duty": 0,
+  "taxInBaseCurrency": 0,
+  "dutyInBaseCurrency": 0,
+  "rate": 0,
+  "quotationItemRef": 0,
+  "description": "string",
+  "netPrice": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+rowID	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+itemCode	string¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+quantity	number(decimal)¦null	false	none		none
+secondaryQuantity	number(decimal)¦null	false	none		none
+fee	number(decimal)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discount	number(decimal)¦null	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+customerDiscount	number(decimal)¦null	false	none		none
+customerDiscountRate	number(decimal)¦null	false	none		none
+addition	number(decimal)¦null	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+tax	number(decimal)¦null	false	none		none
+duty	number(decimal)¦null	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+quotationItemRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+netPrice	number(decimal)¦null	false	none		none
+   
+{
+  "invoice": {
+    "number": 0,
+    "quotationId": 0,
+    "invoiceId": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+invoice	DataModelsDeleteInvoice	false	none		none
+   
+{
+  "number": 0,
+  "quotationId": 0,
+  "invoiceId": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+quotationId	integer(int32)¦null	false	none		none
+invoiceId	integer(int32)¦null	false	none		none
+   
+{
+  "number": 0,
+  "customerPattyRef": 0,
+  "customerPartyCode": "string",
+  "quotationId": 0,
+  "invoiceId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+customerPattyRef	integer(int32)¦null	false	none		none
+customerPartyCode	string¦null	false	none		none
+quotationId	integer(int32)¦null	false	none		none
+invoiceId	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "number": 0,
+  "itemRef": 0,
+  "saleTypeRef": 0,
+  "priceNoteItemID": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+saleTypeRef	integer(int32)¦null	false	none		none
+priceNoteItemID	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "quotation": {
+    "quotationID": 0,
+    "customerPartyRef": 0,
+    "customerPartyCode": "string",
+    "customerPartyPhone": "string",
+    "customerPartyIdentificationCode": "string",
+    "customerRealName": "string",
+    "saleTypeRef": 0,
+    "partyAddressRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "expirationDate": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "price": 0,
+    "priceInBaseCurrency": 0,
+    "discount": 0,
+    "discountInBaseCurrency": 0,
+    "addition": 0,
+    "additionInBaseCurrency": 0,
+    "tax": 0,
+    "taxInBaseCurrency": 0,
+    "duty": 0,
+    "dutyInBaseCurrency": 0,
+    "netPrice": 0,
+    "rate": 0,
+    "creator": 0,
+    "closed": true,
+    "fiscalYearRef": 0
+  },
+  "quotationItems": [
+    {
+      "itemRef": 0,
+      "itemCode": "string",
+      "tracingRef": 0,
+      "rowID": 0,
+      "stockRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "fee": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrency": 0,
+      "customerDiscount": 0,
+      "customerDiscountRate": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "taxInBaseCurrency": 0,
+      "duty": 0,
+      "dutyInBaseCurrency": 0,
+      "netPrice": 0,
+      "rate": 0,
+      "usedQuantity": 0,
+      "dutyRate": 0,
+      "taxRate": 0,
+      "description": "string"
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+quotation	DataModelsCreateQuotation	false	none		none
+quotationItems	[DataModelsCreateQuotationItem]
+false	none		none
+   
+{
+  "quotationID": 0,
+  "customerPartyRef": 0,
+  "customerPartyCode": "string",
+  "customerPartyPhone": "string",
+  "customerPartyIdentificationCode": "string",
+  "customerRealName": "string",
+  "saleTypeRef": 0,
+  "partyAddressRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "expirationDate": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "price": 0,
+  "priceInBaseCurrency": 0,
+  "discount": 0,
+  "discountInBaseCurrency": 0,
+  "addition": 0,
+  "additionInBaseCurrency": 0,
+  "tax": 0,
+  "taxInBaseCurrency": 0,
+  "duty": 0,
+  "dutyInBaseCurrency": 0,
+  "netPrice": 0,
+  "rate": 0,
+  "creator": 0,
+  "closed": true,
+  "fiscalYearRef": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+quotationID	integer(int32)¦null	false	none		none
+customerPartyRef	integer(int32)¦null	false	none		none
+customerPartyCode	string¦null	false	none		none
+customerPartyPhone	string¦null	false	none		none
+customerPartyIdentificationCode	string¦null	false	none		none
+customerRealName	string	false	none		none
+saleTypeRef	integer(int32)¦null	false	none		none
+partyAddressRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+expirationDate	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+price	number(decimal)	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discount	number(decimal)	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+addition	number(decimal)	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+tax	number(decimal)	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+duty	number(decimal)	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+netPrice	number(decimal)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+creator	integer(int32)¦null	false	none		none
+closed	boolean¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+   
+{
+  "itemRef": 0,
+  "itemCode": "string",
+  "tracingRef": 0,
+  "rowID": 0,
+  "stockRef": 0,
+  "quantity": 0,
+  "secondaryQuantity": 0,
+  "fee": 0,
+  "price": 0,
+  "priceInBaseCurrency": 0,
+  "discount": 0,
+  "discountInBaseCurrency": 0,
+  "customerDiscount": 0,
+  "customerDiscountRate": 0,
+  "addition": 0,
+  "additionInBaseCurrency": 0,
+  "tax": 0,
+  "taxInBaseCurrency": 0,
+  "duty": 0,
+  "dutyInBaseCurrency": 0,
+  "netPrice": 0,
+  "rate": 0,
+  "usedQuantity": 0,
+  "dutyRate": 0,
+  "taxRate": 0,
+  "description": "string"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+itemRef	integer(int32)¦null	false	none		none
+itemCode	string¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+rowID	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+quantity	number(decimal)	false	none		none
+secondaryQuantity	number(decimal)¦null	false	none		none
+fee	number(decimal)	false	none		none
+price	number(decimal)	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discount	number(decimal)	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+customerDiscount	number(decimal)¦null	false	none		none
+customerDiscountRate	number(decimal)¦null	false	none		none
+addition	number(decimal)	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+tax	number(decimal)	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+duty	number(decimal)	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+netPrice	number(decimal)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+usedQuantity	number(decimal)¦null	false	none		none
+dutyRate	number(decimal)¦null	false	none		none
+taxRate	number(decimal)¦null	false	none		none
+description	string¦null	false	none		none
+   
+{
+  "quotation": {
+    "number": 0,
+    "quotationId": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+quotation	DataModelsDeleteQuotation	false	none		none
+   
+{
+  "number": 0,
+  "quotationId": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+quotationId	integer(int32)¦null	false	none		none
+   
+{
+  "number": 0,
+  "customerPattyRef": 0,
+  "customerPartyCode": "string",
+  "quotationId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+customerPattyRef	integer(int32)¦null	false	none		none
+customerPartyCode	string¦null	false	none		none
+quotationId	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+   
+{
+  "returnedInvoice": {
+    "returnedInvoiceId": 0,
+    "quotationRef": 0,
+    "customerPartyRef": 0,
+    "customerRealName": "string",
+    "customerPartyPhone": "string",
+    "customerPartyIdentificationCode": "string",
+    "customerPartyCode": "string",
+    "saleTypeRef": 0,
+    "partyAddressRef": 0,
+    "number": 0,
+    "date": "2019-08-24T14:15:22Z",
+    "currencyRef": 0,
+    "slRef": 0,
+    "price": 0,
+    "discount": 0,
+    "addition": 0,
+    "tax": 0,
+    "duty": 0,
+    "priceInBaseCurrency": 0,
+    "discountInBaseCurrency": 0,
+    "additionInBaseCurrency": 0,
+    "taxInBaseCurrency": 0,
+    "dutyInBaseCurrency": 0,
+    "rate": 0,
+    "netPrice": 0,
+    "creator": 0,
+    "creationDate": "2019-08-24T14:15:22Z",
+    "lastModifier": 0,
+    "lastModificationDate": "2019-08-24T14:15:22Z",
+    "fiscalYearRef": 0,
+    "description": "string"
+  },
+  "returnedInvoiceItem": [
+    {
+      "rowID": 0,
+      "itemRef": 0,
+      "itemCode": "string",
+      "tracingRef": 0,
+      "stockRef": 0,
+      "quantity": 0,
+      "secondaryQuantity": 0,
+      "fee": 0,
+      "price": 0,
+      "priceInBaseCurrency": 0,
+      "discount": 0,
+      "discountInBaseCurrency": 0,
+      "customerDiscount": 0,
+      "customerDiscountRate": 0,
+      "addition": 0,
+      "additionInBaseCurrency": 0,
+      "tax": 0,
+      "duty": 0,
+      "taxInBaseCurrency": 0,
+      "dutyInBaseCurrency": 0,
+      "rate": 0,
+      "quotationItemRef": 0,
+      "description": "string",
+      "netPrice": 0
+    }
+  ]
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+returnedInvoice	DataModelsCreateReturnedInvoice	false	none		none
+returnedInvoiceItem	[DataModelsCreateReturnedInvoiceItem]
+false	none		none
+   
+{
+  "returnedInvoiceId": 0,
+  "quotationRef": 0,
+  "customerPartyRef": 0,
+  "customerRealName": "string",
+  "customerPartyPhone": "string",
+  "customerPartyIdentificationCode": "string",
+  "customerPartyCode": "string",
+  "saleTypeRef": 0,
+  "partyAddressRef": 0,
+  "number": 0,
+  "date": "2019-08-24T14:15:22Z",
+  "currencyRef": 0,
+  "slRef": 0,
+  "price": 0,
+  "discount": 0,
+  "addition": 0,
+  "tax": 0,
+  "duty": 0,
+  "priceInBaseCurrency": 0,
+  "discountInBaseCurrency": 0,
+  "additionInBaseCurrency": 0,
+  "taxInBaseCurrency": 0,
+  "dutyInBaseCurrency": 0,
+  "rate": 0,
+  "netPrice": 0,
+  "creator": 0,
+  "creationDate": "2019-08-24T14:15:22Z",
+  "lastModifier": 0,
+  "lastModificationDate": "2019-08-24T14:15:22Z",
+  "fiscalYearRef": 0,
+  "description": "string"
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+returnedInvoiceId	integer(int32)¦null	false	none		none
+quotationRef	integer(int32)¦null	false	none		none
+customerPartyRef	integer(int32)¦null	false	none		none
+customerRealName	string¦null	false	none		none
+customerPartyPhone	string¦null	false	none		none
+customerPartyIdentificationCode	string¦null	false	none		none
+customerPartyCode	string¦null	false	none		none
+saleTypeRef	integer(int32)¦null	false	none		none
+partyAddressRef	integer(int32)¦null	false	none		none
+number	integer(int32)¦null	false	none		none
+date	string(date-time)¦null	false	none		none
+currencyRef	integer(int32)¦null	false	none		none
+slRef	integer(int32)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+discount	number(decimal)¦null	false	none		none
+addition	number(decimal)¦null	false	none		none
+tax	number(decimal)¦null	false	none		none
+duty	number(decimal)¦null	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+netPrice	number(decimal)¦null	false	none		none
+creator	integer(int32)¦null	false	none		none
+creationDate	string(date-time)¦null	false	none		none
+lastModifier	integer(int32)¦null	false	none		none
+lastModificationDate	string(date-time)¦null	false	none		none
+fiscalYearRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+   
+{
+  "rowID": 0,
+  "itemRef": 0,
+  "itemCode": "string",
+  "tracingRef": 0,
+  "stockRef": 0,
+  "quantity": 0,
+  "secondaryQuantity": 0,
+  "fee": 0,
+  "price": 0,
+  "priceInBaseCurrency": 0,
+  "discount": 0,
+  "discountInBaseCurrency": 0,
+  "customerDiscount": 0,
+  "customerDiscountRate": 0,
+  "addition": 0,
+  "additionInBaseCurrency": 0,
+  "tax": 0,
+  "duty": 0,
+  "taxInBaseCurrency": 0,
+  "dutyInBaseCurrency": 0,
+  "rate": 0,
+  "quotationItemRef": 0,
+  "description": "string",
+  "netPrice": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+rowID	integer(int32)¦null	false	none		none
+itemRef	integer(int32)¦null	false	none		none
+itemCode	string¦null	false	none		none
+tracingRef	integer(int32)¦null	false	none		none
+stockRef	integer(int32)¦null	false	none		none
+quantity	number(decimal)¦null	false	none		none
+secondaryQuantity	number(decimal)¦null	false	none		none
+fee	number(decimal)¦null	false	none		none
+price	number(decimal)¦null	false	none		none
+priceInBaseCurrency	number(decimal)¦null	false	none		none
+discount	number(decimal)¦null	false	none		none
+discountInBaseCurrency	number(decimal)¦null	false	none		none
+customerDiscount	number(decimal)¦null	false	none		none
+customerDiscountRate	number(decimal)¦null	false	none		none
+addition	number(decimal)¦null	false	none		none
+additionInBaseCurrency	number(decimal)¦null	false	none		none
+tax	number(decimal)¦null	false	none		none
+duty	number(decimal)¦null	false	none		none
+taxInBaseCurrency	number(decimal)¦null	false	none		none
+dutyInBaseCurrency	number(decimal)¦null	false	none		none
+rate	number(decimal)¦null	false	none		none
+quotationItemRef	integer(int32)¦null	false	none		none
+description	string¦null	false	none		none
+netPrice	number(decimal)¦null	false	none		none
+   
+{
+  "returnedInvoice": {
+    "number": 0,
+    "quotationId": 0,
+    "returnedInvoiceID": 0
+  }
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+returnedInvoice	DataModelsDeleteReturnedInvoice	false	none		none
+   
+{
+  "number": 0,
+  "quotationId": 0,
+  "returnedInvoiceID": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+quotationId	integer(int32)¦null	false	none		none
+returnedInvoiceID	integer(int32)¦null	false	none		none
+   
+{
+  "number": 0,
+  "saleTypeId": 0,
+  "sortBy": "string",
+  "sortDesc": true,
+  "take": 0,
+  "skip": 0
+}
+
+Attribute
+Name	Type	Required	Restrictions	Title	Description
+number	integer(int32)¦null	false	none		none
+saleTypeId	integer(int32)¦null	false	none		none
+sortBy	string¦null	false	none		none
+sortDesc	boolean	false	none		none
+take	integer(int64)¦null	false	none		none
+skip	integer(int64)¦null	false	none		none
+
